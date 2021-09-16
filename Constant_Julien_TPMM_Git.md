@@ -19,3 +19,5 @@
 
 > Le lien https://try.github.io/ étant invalide, je me suis basé sur ce [site](https://learngitbranching.js.org/?locale=fr_FR)
 
+![](https://i.imgur.com/X7N8zcj.png)
+![](https://i.imgur.com/k25Nuql.png)
