@@ -1,10 +1,12 @@
-/*
- * Server.hpp
- *
- *  Created on: 20 sept. 2021
- *      Author: Jules
+/**
+ * @author Jules Ramos
+ * @file Server.hpp
+ * @date 20/09/2021
+ * @brief
  */
 
+//
+//Define guards
 #ifndef SERVER_HPP_
 #define SERVER_HPP_
 
