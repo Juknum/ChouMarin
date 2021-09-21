@@ -11,6 +11,21 @@
 #define SCHEDULER_HPP_
 
 
+class Scheduler
+{
+public:
+  //TODO: forme canonique
+
+  /**
+   * @brief
+   * @return
+   * @param
+   */
+  void scheduler();
+
+private:
+
+}
 
 
 
