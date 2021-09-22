@@ -1,17 +1,17 @@
 /**
  * @author Jules Ramos
- * @file Scheduler.hpp
+ * @file Type.hpp
  * @date 21/09/2021
  * @brief
  */
 
 //
 //Define guards
-#ifndef SCHEDULER_HPP_
-#define SCHEDULER_HPP_
+#ifndef TYPE_HPP_
+#define TYPE_HPP_
 
 
-class Scheduler
+class Type
 {
 public:
   //TODO: forme canonique
@@ -21,10 +21,11 @@ public:
    * @return
    * @param
    */
-  Scheduler();
+  Type();
 
 private:
 
-};
+}
 
-#endif /* SCHEDULER_HPP_ */
+
+#endif /* TYPE_HPP_ */

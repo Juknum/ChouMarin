@@ -7,6 +7,7 @@
 
 #include "Scheduler.hpp"
 
-
-
-
+Scheduler::Scheduler()
+{
+  //TODO: this method
+}
