@@ -49,23 +49,27 @@ Server& Server::operator=(Server const& server) {
  */
 void Server::consoleWrite(const SensorData& data) const {
 	switch (data.dataType) {
-		case e_float:
+		case e_float: {
 			float f = atof(data.value);
 			cout << SensorTypeStrings[data.sensorType] << "\t:\t" << f << endl;
 			break;
-			
-		case e_int:
+		}
+		case e_int: {
 			int i = atoi(data.value);
 			cout << SensorTypeStrings[data.sensorType] << "\t:\t" << i << endl;
 			break;
-
-		case e_bool:
+		}
+		case e_bool: {
 			bool b = (strcmp("true", data.value) == 0) ? true : false;
 			cout << SensorTypeStrings[data.sensorType] << "\t:\t" << b << endl;
 			break;
-
-		default:
+		}
+		case e_unknown: {
 			break;
+		}
+		default: {
+			break;
+		}
 	}
 };
 
@@ -74,9 +78,9 @@ void Server::consoleWrite(const SensorData& data) const {
  * @param data sensor data
  */
 void Server::fileWrite(const SensorData& data) const {
-	char buffer[STRING_LENGTH];
-	strcpy(buffer, SensorTypeStrings[data.sensorType]);
-	strcat(buffer, ".log");
+	string buffer;
+	buffer.assign(SensorTypeStrings[data.sensorType]);
+	buffer.append(".log");
 
 	ofstream logInfo(buffer, ios::app);
 

@@ -25,8 +25,9 @@ class Server {
 
 		void consoleWrite(const SensorData& data) const;
 		void fileWrite(const SensorData& data) const;
-
-		void dataReceive(const SensorData& data) const;
+		void dataReceive(const SensorData &data) const;
 };
+
+void operator<<(Server &server, const SensorData &data);
 
 #endif // SERVER_H_
