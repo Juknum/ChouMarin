@@ -2,47 +2,60 @@
  * @author Jules Ramos
  * @file Server.cpp
  * @date 20/09/2021
- * @brief
+ * @brief Type and method definition for the Server class
  */
 
 #include "Server.hpp"
 
 Server::Server()
 {
-  //TODO: this
+  this->m_consolActivation = true;
+  this->m_logActivation = true;
 }
 
-Server::Server(Server& server)
+Server::Server(const Server& server)
 {
-  //TODO: this
+  this->m_consolActivation = server.m_consolActivation;
+  this->m_logActivation = server.m_logActivation;
 }
 
 Server::~Server()
 {
-  //TODO: this
+  //nothing to free here for now;
 }
 
-void Server::operator=(Server& server)
+void Server::operator=(const Server& server)
+{
+  this->m_consolActivation = server.m_consolActivation;
+  this->m_logActivation = server.m_logActivation;
+}
+
+ostream& Server::operator<<(ostream& os, float data)
+{
+  os<<data<<"\n";
+  return os;
+}
+
+void Server::dataRcv(float data)
 {
   //TODO: this
 }
 
-void Server::operator<<(Type& type)
+void Server::fileWrite(float data)
 {
-  //TODO: this
+  ofstream file("log.txt",ios::app); //TODO: different log files depending on the sensor
+  if(!file.is_open())
+  {
+    std::cout<<"log file couldn't be opened!\n";
+  }
+  else
+  {
+    file<<data;
+  }
+  file.close();
 }
 
-void Server::dataRcv(Type& type)
+void Server::consolWrite(float data)
 {
-  //TODO: this
-}
-
-void Server::fileWrite(Type& type)
-{
-  //TODO: this
-}
-
-void Server::consolWrite(Type& type)
-{
-  //TODO: this
+  std::cout<<data;
 }

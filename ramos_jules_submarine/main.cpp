@@ -2,15 +2,16 @@
  * @author Jules Ramos
  * @file main.cpp
  * @date 22/09/2021
- * @brief
+ * @brief file for the main function
  */
 
 #include "Scheduler.hpp"
 #include "Server.hpp"
 #include "Sensor.hpp"
-#include "Type.hpp"
+#include <iostream>
 
 int main()
 {
-
+  float data = 12;
+  std::cout<<"start\n"<<"data = "<<data<<"\n";
 }

@@ -2,7 +2,7 @@
  * @author Jules Ramos
  * @file Sensor.hpp
  * @date 21/09/2021
- * @brief
+ * @brief Type and method declaration for the Sensor class
  */
 
 //
@@ -10,60 +10,67 @@
 #ifndef SENSOR_HPP_
 #define SENSOR_HPP_
 
-#include "Type.hpp"
+#include <cstdlib>
 
 class Sensor
 {
 public:
-  //TODO: forme canonique
 
   /**
-   * @brief
-   * @return
-   * @param
+   * @brief default constructor
+   * @return nothing
+   * @param none
    */
   Sensor();
 
   /**
-   * @brief
-   * @return
-   * @param
+   * @brief copy constructor
+   * @return nothing
+   * @param copied Sensor object reference
    */
-  Sensor(Sensor& sensor);
+  Sensor(const Sensor& sensor);
 
   /**
-   * @brief
-   * @return
-   * @param
+   * @brief constructor with a specific m_data initialization
+   * @return nothing
+   * @param float: wanted value for m_data
    */
-  Sensor(Type& type);
+  Sensor(float data);
 
   /**
-   * @brief
-   * @return
-   * @param
+   * @brief destructor
+   * @return nothing
+   * @param none
    */
-  ~Sensor();
+  virtual ~Sensor();
 
   /**
-   * @brief
-   * @return
-   * @param
+   * @brief = operator overload
+   * @return nothing
+   * @param Sensor object reference
    */
-  Type getData();
+  void operator=(const Sensor& sensor);
+
+  /**
+   * @brief getter for the m_data attribute
+   * @return m_data, float
+   * @param none
+   */
+  float getData();
 
 protected:
 
   /**
-   * @brief
-   * @return
-   * @param
+   * @brief generates a random value for the m_data attribute
+   * @return a float: the new data value
+   * @param none
    */
-  Type aleaGenVal();
+  float aleaGenVal();
 
 private:
 
-}
+  float m_data; // stocks the data "measured" by the sensor until it is sent
+};
 
 
 

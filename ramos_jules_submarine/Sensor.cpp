@@ -2,7 +2,7 @@
  * @author Jules Ramos
  * @file Sensor.cpp
  * @date 21/09/2021
- * @brief
+ * @brief Type and method definition for the Sensor class
  */
 
 #include "Sensor.hpp"
@@ -10,30 +10,36 @@
 
 Sensor::Sensor()
 {
-  //TODO: this
+  this->m_data = 0;
 }
 
-Sensor::Sensor(Sensor& sensor)
+Sensor::Sensor(const Sensor& sensor)
 {
-  //TODO: this
+  this->m_data = sensor.m_data;
 }
 
-Sensor::Sensor(Type& type)
+Sensor::Sensor(float data)
 {
-  //TODO: this
+  this->m_data = data;
 }
 
 Sensor::~Sensor()
 {
-  //TODO: this
+  //nothing to destroy
 }
 
-Type Sensor::getData()
+void Sensor::operator=(const Sensor& sensor)
 {
-  //TODO: this
+  //nothing to give here
 }
 
-Type Sensor::aleaGenVal()
+float Sensor::getData()
 {
-  //TODO: this
+  return this->m_data;
+}
+
+float Sensor::aleaGenVal()
+{
+  this->m_data = rand()%100; //from 0 to 99, placeholder, to be reworked after the inheritance
+  return this->m_data;
 }

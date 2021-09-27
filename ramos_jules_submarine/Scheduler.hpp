@@ -14,12 +14,11 @@
 class Scheduler
 {
 public:
-  //TODO: forme canonique
 
   /**
-   * @brief
-   * @return
-   * @param
+   * @brief default constructor
+   * @return nothing
+   * @param none
    */
   Scheduler();
 

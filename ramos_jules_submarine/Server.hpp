@@ -2,7 +2,7 @@
  * @author Jules Ramos
  * @file Server.hpp
  * @date 20/09/2021
- * @brief
+ * @brief Type and method declaration for the Server class
  */
 
 //
@@ -10,74 +10,77 @@
 #ifndef SERVER_HPP_
 #define SERVER_HPP_
 
-#include "Type.hpp"
+#include <iostream>
+#include <fstream>
+#include <string>
+
+using namespace std;
 
 class Server
 {
 public:
-  //TODO: forme canonique
 
   /**
-   * @brief
-   * @return
-   * @param
+   * @brief default constructor
+   * @return nothing
+   * @param none
    */
   Server();
 
   /**
-   * @brief
-   * @return
-   * @param
+   * @brief copy constructor
+   * @return nothing
+   * @param copied Server object reference
    */
-  Server(Server& server);
+  Server(const Server& server);
+
+  /**
+   * @brief destructor
+   * @return nothing
+   * @param none
+   */
+  virtual ~Server();
+
+  /**
+   * @brief affectation operator overload
+   * @return nothing
+   * @param copied Server object reference
+   */
+  void operator=(const Server& server);
+
+  /**
+   * @brief << operator overload
+   * @return nothing
+   * @param displayed thing
+   */
+  ostream& operator<<(ostream& os, float data);
 
   /**
    * @brief
    * @return
    * @param
    */
-  ~Server();
-
-  /**
-   * @brief
-   * @return
-   * @param
-   */
-  void operator=(Server& server);
-
-  /**
-   * @brief
-   * @return
-   * @param
-   */
-  void operator<<(Type& type);
-
-  /**
-   * @brief
-   * @return
-   * @param
-   */
-  void dataRcv(Type& type);
+  void dataRcv(float data);
 
 private:
 
   /**
-   * @brief
-   * @return
-   * @param
+   * @brief writes the data of each sensor in its designed log file
+   * @return nothing
+   * @param incoming data, of float type for now
    */
-  void fileWrite(Type& type);
+  void fileWrite(float data);
 
   /**
-   * @brief
-   * @return
-   * @param
+   * @brief displays the incoming data in the console
+   * @return nothing
+   * @param incoming data, of float type for now
    */
-  void consolWrite(Type& type);
+  void consolWrite(float data);
 
-  bool m_consolActivation; //TODO: description
+  bool m_consolActivation; //enables or disables the console writing
 
-  bool m_logActivation; //TODO: description
+  bool m_logActivation; //enables or disables the log file writing
 
 };
 
