@@ -8,8 +8,7 @@
 #ifndef CONSTANTS_H_
 #define CONSTANTS_H_
 
-#include <string.h>
-#include <map>
+#include <string>
 
 #define STRING_LENGTH 16
 
@@ -17,7 +16,7 @@
  * @brief types for data value of a sensor
  */
 enum DataType {
-	e_unknown,
+	e_unknown_data,
 	e_float,
 	e_int,
 	e_bool
@@ -36,14 +35,14 @@ enum SensorType {
 
 /**
  * @brief corresponding enum to strings
+ * ! strings must match position of their corresponding enum
  */
-typedef std::map<SensorType, std::string> SensorTypeMap;
-SensorTypeMap SensorTypeStrings {
-	{ e_unknown_type, std::string("UNKNOWN_TYPE")},
-	{ e_temperature, std::string("TEMPERATURE")},
-	{ e_humidity, std::string("HUMIDITY")},
-	{ e_light, std::string("LIGHT")},
-	{ e_pressure, std::string("PRESSURE")}
+const std::string SensorTypeStrings[5] {
+	"UNKNOWN_TYPE",
+	"TEMPERATURE",
+	"HUMIDITY",
+	"LIGHT",
+	"PRESSURE"
 };
 
 /**

@@ -17,15 +17,15 @@ class Server {
 
 	public:
 		Server();
-		Server(bool, bool);
 		Server(const Server&);
+		Server(bool, bool);
+		virtual ~Server() {};
 
-		virtual ~Server();
 		Server& operator=(const Server&);
 
-		void consoleWrite(const SensorData& data) const;
 		void fileWrite(const SensorData& data) const;
-		void dataReceive(const SensorData &data) const;
+		void dataRcv(const SensorData& data) const;
+		void consoleWrite(const SensorData& data) const;
 };
 
 void operator<<(Server &server, const SensorData &data);

@@ -9,8 +9,8 @@
 #include <string.h>
 #include <fstream>
 
-#include "Server.hpp"
-#include "constants.hpp"
+#include "../Includes/Server.hpp"
+#include "../Includes/constants.hpp"
 
 using namespace std;
 
@@ -64,7 +64,7 @@ void Server::consoleWrite(const SensorData& data) const {
 			cout << SensorTypeStrings[data.sensorType] << "\t:\t" << b << endl;
 			break;
 		}
-		case e_unknown: {
+		case e_unknown_data: {
 			break;
 		}
 		default: {
@@ -94,7 +94,7 @@ void Server::fileWrite(const SensorData& data) const {
  * @brief split incoming data into sub-functions (if enabled)
  * @param data sensor data
  */
-void Server::dataReceive(const SensorData& data) const {
+void Server::dataRcv(const SensorData& data) const {
 	if (this->consoleActivated) this->consoleWrite(data);
 	if (this->logsActivated) this->fileWrite(data);
 }
@@ -104,4 +104,4 @@ void Server::dataReceive(const SensorData& data) const {
  * @param server server where to sent data
  * @param data sensor data
  */
-void operator<<(Server &server, const SensorData& data) { server.dataReceive(data); }
+void operator<<(Server &server, const SensorData& data) { server.dataRcv(data); }
