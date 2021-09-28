@@ -39,10 +39,22 @@ enum SensorType {
  */
 const std::string SensorTypeStrings[5] {
 	"UNKNOWN_TYPE",
-	"TEMPERATURE",
-	"HUMIDITY",
-	"LIGHT",
-	"PRESSURE"
+	"TEMPERATURE ",
+	"HUMIDITY    ",
+	"LIGHT       ",
+	"PRESSURE    "
+};
+
+/**
+ * @brief corresponding enum to file names
+ * ! strings must match position of their corresponding enum
+ */
+const std::string SensorTypeFileNames[5] {
+	"sensor_unknown",
+	"sensor_temperature",
+	"sensor_humidity",
+	"sensor_light",
+	"sensor_pressure"
 };
 
 /**
@@ -54,7 +66,7 @@ const std::string SensorTypeStrings[5] {
 typedef struct s_SensorData {
 	SensorType sensorType;
 	DataType dataType;
-	char *value;
+	std::string value;
 } SensorData;
 
 #endif // CONSTANTS_H_

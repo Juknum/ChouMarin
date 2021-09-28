@@ -8,12 +8,12 @@
 #ifndef SENSOR_H_
 #define SENSOR_H_
 
-#include "Constants.hpp"
+#include "constants.hpp"
 
 class SensorBase {
 protected:
-  SensorData data;      // data of the sensor
-  void emptyValue();    // delete data properly
+  SensorData data;   // data of the sensor
+  int aleaGenVal();  // random int generator
 public:
   SensorBase();
   SensorBase(SensorType sT, DataType dT);
@@ -21,7 +21,7 @@ public:
   SensorBase& operator=(const SensorBase &sB);
 
   virtual ~SensorBase();
-  virtual const SensorData& sendData() = 0;
+  virtual const SensorData& getData() = 0;
 };
 
 // template for all existing sensors
@@ -35,7 +35,7 @@ public:
   Sensor<T>& operator=(Sensor<T> const& s) { this->value = s.value; return *this; }
 
   virtual ~Sensor() {};
-  virtual const SensorData& sendData() = 0;
+  virtual const SensorData& getData() = 0;
 };
 
 #endif // SENSOR_H_

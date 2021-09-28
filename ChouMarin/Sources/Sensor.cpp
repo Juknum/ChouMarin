@@ -6,7 +6,6 @@
  */
 
 #include "../Includes/Sensor.hpp"
-#include <cstring>
 
 template <class T> Sensor<T>::Sensor(): T() {};
 
@@ -26,7 +25,7 @@ SensorBase::SensorBase() {
 SensorBase::SensorBase(SensorType sT, DataType dT) {
   this->data.sensorType = sT;
   this->data.dataType = dT;
-  this->data.value = NULL;
+  this->data.value = "";
 };
 
 /**
@@ -36,13 +35,7 @@ SensorBase::SensorBase(SensorType sT, DataType dT) {
 SensorBase::SensorBase(const SensorBase& sB) {
   this->data.sensorType = sB.data.sensorType;
   this->data.dataType = sB.data.dataType;
-
-  if (sB.data.value != NULL) {
-    char* dataCopy = new char[strlen(sB.data.value)];
-    strcpy(dataCopy, sB.data.value);
-    this->data.value = dataCopy;
-  }
-  else this->data.value = NULL;
+  this->data.value = sB.data.value;
 };
 
 /**
@@ -53,27 +46,21 @@ SensorBase::SensorBase(const SensorBase& sB) {
 SensorBase& SensorBase::operator=(const SensorBase& sB) {
   this->data.sensorType = sB.data.sensorType;
   this->data.dataType = sB.data.dataType;
-
-  if (sB.data.value != NULL) {
-    char *dataCopy = new char[strlen(sB.data.value)];
-    strcpy(dataCopy, sB.data.value);
-    this->data.value = dataCopy;
-  }
-  else this->data.value = NULL;
-
+  this->data.value = sB.data.value;
   return *this;
-};
-
-/**
- * @brief "recursively" delete data value of sensor
- */
-void SensorBase::emptyValue() {
-  if (this->data.value != NULL) delete [] this->data.value;
 };
 
 /**
  * @brief Destroy the Sensor Base:: Sensor Base object
  */
 SensorBase::~SensorBase() {
-  this->emptyValue();
+  this->data.value = "";
 };
+
+/**
+ * @brief Randomly generate an integer
+ * @return int 
+ */
+int SensorBase::aleaGenVal() {
+  return rand();
+}

@@ -6,6 +6,7 @@
  */
 
 #include <iostream>
+#include <ctime>
 #include <string.h>
 #include <fstream>
 
@@ -17,7 +18,7 @@ using namespace std;
 /**
  * @brief Construct a new Server:: Server object
  */
-Server::Server() : consoleActivated(), logsActivated() {}
+Server::Server() : consoleActivated(true), logsActivated(true) {}
 
 /**
  * @brief Construct a new Server:: Server object with parameters
@@ -27,41 +28,28 @@ Server::Server() : consoleActivated(), logsActivated() {}
 Server::Server(bool consoleOn, bool logsOn) : consoleActivated(consoleOn), logsActivated(logsOn) {}
 
 /**
- * @brief Construct a new Server:: Server object from another server
- * @param server server
- */
-Server::Server(const Server& server) : consoleActivated(server.consoleActivated), logsActivated(server.logsActivated) {}
-
-/**
- * @brief Copy a server from the given server
- * @param server server
- * @return Server& 
- */
-Server& Server::operator=(Server const& server) {
-	this->consoleActivated = server.consoleActivated;
-	this->logsActivated = server.consoleActivated;
-	return *this;
-}
-
-/**
  * @brief Write data.value into the console
  * @param data sensor data
  */
 void Server::consoleWrite(const SensorData& data) const {
+
+	time_t t = time(0);
+	string date = ctime(&t);
+
 	switch (data.dataType) {
 		case e_float: {
-			float f = atof(data.value);
-			cout << SensorTypeStrings[data.sensorType] << "\t:\t" << f << endl;
+			float f = stof(data.value);
+			cout << SensorTypeStrings[data.sensorType] << " : " << f << " | " << date << endl;
 			break;
 		}
 		case e_int: {
-			int i = atoi(data.value);
-			cout << SensorTypeStrings[data.sensorType] << "\t:\t" << i << endl;
+			int i = stoi(data.value);
+			cout << SensorTypeStrings[data.sensorType] << " : " << i << " | " << date << endl;
 			break;
 		}
 		case e_bool: {
-			bool b = (strcmp("true", data.value) == 0) ? true : false;
-			cout << SensorTypeStrings[data.sensorType] << "\t:\t" << b << endl;
+			string b = (data.value == "true") ? "true" : "false";
+			cout << SensorTypeStrings[data.sensorType] << " : " << b << " | " << date << endl;
 			break;
 		}
 		case e_unknown_data: {
@@ -78,14 +66,13 @@ void Server::consoleWrite(const SensorData& data) const {
  * @param data sensor data
  */
 void Server::fileWrite(const SensorData& data) const {
-	string buffer;
-	buffer.assign(SensorTypeStrings[data.sensorType]);
+	string buffer = "./Logs/";
+	buffer.append(SensorTypeFileNames[data.sensorType]);
 	buffer.append(".log");
 
 	ofstream logInfo(buffer, ios::app);
 
-	if (data.dataType == e_bool) logInfo << ((strcmp("true", data.value) == 0) ? true : false) << endl; // can only be true OR false
-	else logInfo << data.value << endl;                                                                 // can be anything
+	logInfo << data.value << endl;
 
 	logInfo.close();
 };

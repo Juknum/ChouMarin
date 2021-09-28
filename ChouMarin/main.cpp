@@ -10,9 +10,10 @@
  *  - pressure.
  */
 
-#include "./Includes/Server.hpp"
+#include "./Includes/Scheduler.hpp"
 
 int main(int argc, char const *argv[]) {
-  /* code */
+  Scheduler sc; // Start the scheduler
+
   return 0;
 }
