@@ -11,6 +11,7 @@
 
 #include "Sensors/headers/HumiditySensor.hpp"
 #include "Sensors/headers/LightSensor.hpp"
+#include "Sensors/headers/TemperatureSensor.hpp"
 #include "../Includes/Scheduler.hpp"
 
 /**
@@ -20,10 +21,12 @@ Scheduler::Scheduler() {
   // add sensors to the list of sensors
   listSensors.push_back(&this->humiditySensor);
   listSensors.push_back(&this->lightSensor);
+  listSensors.push_back(&this->temperatureSensor);
 
   // add time interval check for sensors
-  timeInterval.push_back(TimeInterval(e_humidity, 500));
-  timeInterval.push_back(TimeInterval(e_light, 500));
+  timeInterval.push_back(TimeInterval(e_humidity, 1000));
+  timeInterval.push_back(TimeInterval(e_light, 1000));
+  timeInterval.push_back(TimeInterval(e_temperature, 1000));
 
   // watching
   while (true) {

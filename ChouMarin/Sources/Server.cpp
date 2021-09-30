@@ -35,21 +35,22 @@ void Server::consoleWrite(const SensorData& data) const {
 
 	time_t t = time(0);
 	string date = ctime(&t);
+	date.erase(24, 25); // remove the '\n' at the end
 
 	switch (data.dataType) {
 		case e_float: {
 			float f = stof(data.value);
-			cout << SensorTypeStrings[data.sensorType] << " : " << f << " | " << date << endl;
+			cout << date << " | " << SensorTypeStrings[data.sensorType] << " : " << f << endl;
 			break;
 		}
 		case e_int: {
 			int i = stoi(data.value);
-			cout << SensorTypeStrings[data.sensorType] << " : " << i << " | " << date << endl;
+			cout << date << " | " << SensorTypeStrings[data.sensorType] << " : " << i << endl;
 			break;
 		}
 		case e_bool: {
 			string b = (data.value == "true") ? "true" : "false";
-			cout << SensorTypeStrings[data.sensorType] << " : " << b << " | " << date << endl;
+			cout << date << " | " << SensorTypeStrings[data.sensorType] << " : " << b << endl;
 			break;
 		}
 		case e_unknown_data: {
@@ -70,9 +71,13 @@ void Server::fileWrite(const SensorData& data) const {
 	buffer.append(SensorTypeFileNames[data.sensorType]);
 	buffer.append(".log");
 
+	time_t t = time(0);
+	string date = ctime(&t);
+	date.erase(24, 25); // remove the '\n' at the end
+
 	ofstream logInfo(buffer, ios::app);
 
-	logInfo << data.value << endl;
+	logInfo << date << " | " << "SENSOR VALUE: " << data.value << endl;
 
 	logInfo.close();
 };
