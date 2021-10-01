@@ -9,9 +9,10 @@
 #include <string>
 #include <time.h>
 
-#include "Sensors/headers/HumiditySensor.hpp"
-#include "Sensors/headers/LightSensor.hpp"
-#include "Sensors/headers/TemperatureSensor.hpp"
+#include "sensors/headers/HumiditySensor.hpp"
+#include "sensors/headers/LightSensor.hpp"
+#include "sensors/headers/TemperatureSensor.hpp"
+#include "sensors/headers/PressureSensor.hpp"
 #include "../Includes/Scheduler.hpp"
 
 /**
@@ -22,11 +23,13 @@ Scheduler::Scheduler() {
   listSensors.push_back(&this->humiditySensor);
   listSensors.push_back(&this->lightSensor);
   listSensors.push_back(&this->temperatureSensor);
+  listSensors.push_back(&this->pressureSensor);
 
   // add time interval check for sensors
   timeInterval.push_back(TimeInterval(e_humidity, 1000));
   timeInterval.push_back(TimeInterval(e_light, 1000));
   timeInterval.push_back(TimeInterval(e_temperature, 1000));
+  timeInterval.push_back(TimeInterval(e_pressure, 1000));
 
   // watching
   while (true) {

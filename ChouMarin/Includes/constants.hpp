@@ -10,8 +10,6 @@
 
 #include <string>
 
-#define STRING_LENGTH 16
-
 /**
  * @brief types for data value of a sensor
  */

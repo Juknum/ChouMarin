@@ -1,11 +1,10 @@
 /**
  * @author @Juknum (Julien CONSTANT)
- * @file Light.cpp
+ * @file LightSensor.cpp
  * @date 27/09/2021
  * @brief Light sensor class main file
  */
 
-#include <string.h>
 #include "headers/LightSensor.hpp"
 #include "../../Includes/constants.hpp"
 
@@ -24,7 +23,7 @@ LightSensor::~LightSensor() {};
  * @return const SensorData& 
  */
 const SensorData& LightSensor::getData() {
-  this->value = this->aleaGenVal() % 2;
+  this->value = this->aleaGenVal<int>(0, 1);
   this->data.value = (this->value == 0) ? "false" : "true";
 
   return this->data;

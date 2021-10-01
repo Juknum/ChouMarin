@@ -1,4 +1,10 @@
-#include <stdio.h>
+/**
+ * @author @Juknum (Julien CONSTANT)
+ * @file HumiditySensor.cpp
+ * @date 27/09/2021
+ * @brief Humidity sensor class main file
+ */
+
 #include "./headers/HumiditySensor.hpp"
 #include "../../Includes/constants.hpp"
 
@@ -19,7 +25,7 @@ HumiditySensor::~HumiditySensor() {};
  * @return const SensorData& 
  */
 const SensorData& HumiditySensor::getData() {
-  this->value = 10 + ((float)(this->aleaGenVal() % 5) / 10) + ((float)(this->aleaGenVal() % 5) / 100);
+  this->value = this->aleaGenVal<float>(9, 11, 2);
   this->data.value = to_string(this->value);
 
   return this->data;

@@ -1,6 +1,6 @@
 /**
  * @author @Juknum (Julien CONSTANT)
- * @file Light.cpp
+ * @file TemperatureSensor.hpp
  * @date 30/09/2021
  * @brief Temperature sensor header file
  */

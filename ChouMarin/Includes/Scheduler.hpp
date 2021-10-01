@@ -15,6 +15,7 @@
 #include "../Sources/Sensors/headers/HumiditySensor.hpp"
 #include "../Sources/Sensors/headers/LightSensor.hpp"
 #include "../Sources/Sensors/headers/TemperatureSensor.hpp"
+#include "../Sources/Sensors/headers/PressureSensor.hpp"
 
 class TimeInterval {
   friend class Scheduler;
@@ -41,7 +42,7 @@ private:
   LightSensor lightSensor;
   HumiditySensor humiditySensor;
   TemperatureSensor temperatureSensor;
-  // TODO: add all sensors here
+  PressureSensor pressureSensor;
   std::vector<SensorBase*> listSensors;
   std::vector<TimeInterval> timeInterval;
 };

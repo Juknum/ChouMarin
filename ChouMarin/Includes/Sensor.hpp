@@ -12,8 +12,9 @@
 
 class SensorBase {
 protected:
-  SensorData data;   // data of the sensor
-  int aleaGenVal();  // random int generator
+  SensorData data; // data of the sensor
+  template<typename T> T aleaGenVal(T min, T max, int precision);
+  template<typename T> T aleaGenVal(T min, T max);
 public:
   SensorBase();
   SensorBase(SensorType sT, DataType dT);
