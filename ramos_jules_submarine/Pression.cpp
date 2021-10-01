@@ -2,18 +2,18 @@
  * @author Jules Ramos
  * @file Server.cpp
  * @date 01/10/2021
- * @brief Type and method definition for the Pressure class
+ * @brief Type and method definition for the Pression class
  */
 
 
-#include "Pressure.hpp"
+#include "Pression.hpp"
 
-float Pressure::aleaGenVal()
+float Pression::aleaGenVal()
 {
   return rand()%100; //from 0 to 99, placeholder, to be reworked after the inheritance
 }
 
-float Pressure::getData()
+float Pression::getData()
 {
   return this->aleaGenVal();
 }

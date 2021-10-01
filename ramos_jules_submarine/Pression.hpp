@@ -2,30 +2,30 @@
  * @author Jules Ramos
  * @file Server.cpp
  * @date 01/10/2021
- * @brief Type and method declaration for the Pressure class
+ * @brief Type and method declaration for the Pression class
  */
 
-#ifndef PRESSURE_HPP_
-#define PRESSURE_HPP_
+#ifndef PRESSION_HPP_
+#define PRESSION_HPP_
 
 
 #include "Sensor.hpp"
 
-class Pressure: public Sensor
+class Pression: public Sensor
 {
 public:
 
-  Pressure():m_sensorType("Pressure"){};
-  Pressure(const Pressure& pressure_p):m_sensorType(pressure_p.m_sensorType){};
-  ~Pressure()
+  Pression():m_sensorType("Pression"){};
+  Pression(const Pression& pression_p):m_sensorType(pression_p.m_sensorType){};
+  ~Pression()
   {
     delete m_sensorType;
   };
 
 
-  void operator=(const Pressure& pressure_p)
+  void operator=(const Pression& pression_p)
   {
-    this->m_sensorType = pressure_p.m_sensorType;
+    this->m_sensorType = pression_p.m_sensorType;
   };
 
   /**
@@ -46,4 +46,4 @@ private:
 };
 
 
-#endif /* PRESSURE_HPP_ */
+#endif /* PRESSION_HPP_ */
