@@ -12,24 +12,23 @@
 #include <time.h>
 
 #include "Server.hpp"
-#include "../Sources/Sensors/headers/HumiditySensor.hpp"
-#include "../Sources/Sensors/headers/LightSensor.hpp"
-#include "../Sources/Sensors/headers/TemperatureSensor.hpp"
-#include "../Sources/Sensors/headers/PressureSensor.hpp"
+#include "sensors/HumiditySensor.hpp"
+#include "sensors/LightSensor.hpp"
+#include "sensors/TemperatureSensor.hpp"
+#include "sensors/PressureSensor.hpp"
 
 class TimeInterval {
   friend class Scheduler;
-
-  public:
-    TimeInterval();
-    TimeInterval(SensorType sensorType, int duration);
-    virtual ~TimeInterval();
-    bool checkTime();
 
   private:
     SensorType sensorType;
     clock_t tClock;
     int duration; // duration in ms
+  public:
+    TimeInterval();
+    TimeInterval(SensorType sensorType, int duration);
+    virtual ~TimeInterval();
+    bool checkTime();
 };
 
 class Scheduler {

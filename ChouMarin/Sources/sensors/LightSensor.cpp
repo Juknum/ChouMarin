@@ -5,7 +5,7 @@
  * @brief Light sensor class main file
  */
 
-#include "headers/LightSensor.hpp"
+#include "../../Includes/sensors/LightSensor.hpp"
 #include "../../Includes/constants.hpp"
 
 /**
@@ -23,8 +23,8 @@ LightSensor::~LightSensor() {};
  * @return const SensorData& 
  */
 const SensorData& LightSensor::getData() {
-  this->value = this->aleaGenVal<int>(0, 1);
-  this->data.value = (this->value == 0) ? "false" : "true";
+  this->value = this->aleaGenVal<int>() % 2;
+  this->data.value = (this->value == 1) ? "false" : "true";
 
   return this->data;
 };

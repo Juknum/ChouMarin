@@ -9,10 +9,10 @@
 #include <string>
 #include <time.h>
 
-#include "sensors/headers/HumiditySensor.hpp"
-#include "sensors/headers/LightSensor.hpp"
-#include "sensors/headers/TemperatureSensor.hpp"
-#include "sensors/headers/PressureSensor.hpp"
+#include "../Includes/sensors/HumiditySensor.hpp"
+#include "../Includes/sensors/LightSensor.hpp"
+#include "../Includes/sensors/TemperatureSensor.hpp"
+#include "../Includes/sensors/PressureSensor.hpp"
 #include "../Includes/Scheduler.hpp"
 
 /**
@@ -79,6 +79,5 @@ bool TimeInterval::checkTime() {
     this->tClock = clock();
     return true;
   }
-  
   return false;
 }

@@ -8,7 +8,7 @@
 #ifndef HUMIDITY_SENSOR_H_
 #define HUMIDITY_SENSOR_H_
 
-#include "../../../Includes/Sensor.hpp"
+#include "../Sensor.hpp"
 
 class HumiditySensor: public Sensor<float> {
   public:

@@ -8,7 +8,7 @@
 #ifndef TEMPERATURE_SENSOR_H_
 #define TEMPERATURE_SENSOR_H_
 
-#include "../../../Includes/Sensor.hpp"
+#include "../Sensor.hpp"
 
 class TemperatureSensor: public Sensor<float> {
   public:

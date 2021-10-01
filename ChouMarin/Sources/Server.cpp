@@ -13,8 +13,6 @@
 #include "../Includes/Server.hpp"
 #include "../Includes/constants.hpp"
 
-using namespace std;
-
 /**
  * @brief Construct a new Server:: Server object
  */
@@ -31,29 +29,30 @@ Server::Server(bool consoleOn, bool logsOn) : consoleActivated(consoleOn), logsA
  * @brief Write data.value into the console
  * @param data sensor data
  */
-void Server::consoleWrite(const SensorData& data) const {
+void Server::consoleWrite(const SensorData& data) {
 
 	time_t t = time(0);
-	string date = ctime(&t);
+	std::string date = ctime(&t);
 	date.erase(24, 25); // remove the '\n' at the end
 
 	switch (data.dataType) {
 		case e_float: {
 			float f = stof(data.value);
-			cout << date << " | " << SensorTypeStrings[data.sensorType] << " : " << f << endl;
+			std::cout << date << " | " << SensorTypeStrings[data.sensorType] << " : " << f << std::endl;
 			break;
 		}
 		case e_int: {
 			int i = stoi(data.value);
-			cout << date << " | " << SensorTypeStrings[data.sensorType] << " : " << i << endl;
+			std::cout << date << " | " << SensorTypeStrings[data.sensorType] << " : " << i << std::endl;
 			break;
 		}
 		case e_bool: {
-			string b = (data.value == "true") ? "true" : "false";
-			cout << date << " | " << SensorTypeStrings[data.sensorType] << " : " << b << endl;
+			std::string b = (data.value == "true") ? "true" : "false";
+			std::cout << date << " | " << SensorTypeStrings[data.sensorType] << " : " << b << std::endl;
 			break;
 		}
 		case e_unknown_data: {
+			std::cout << date << " | " << SensorTypeStrings[data.sensorType] << " : " << data.value << std::endl;
 			break;
 		}
 		default: {
@@ -66,18 +65,18 @@ void Server::consoleWrite(const SensorData& data) const {
  * @brief Write data.value into the associated log file
  * @param data sensor data
  */
-void Server::fileWrite(const SensorData& data) const {
-	string buffer = "./Logs/";
+void Server::fileWrite(const SensorData& data) {
+	std::string buffer = "./Logs/";
 	buffer.append(SensorTypeFileNames[data.sensorType]);
 	buffer.append(".log");
 
 	time_t t = time(0);
-	string date = ctime(&t);
+	std::string date = ctime(&t);
 	date.erase(24, 25); // remove the '\n' at the end
 
-	ofstream logInfo(buffer, ios::app);
+	std::ofstream logInfo(buffer, std::ios::app);
 
-	logInfo << date << " | " << "SENSOR VALUE: " << data.value << endl;
+	logInfo << date << " | " << "SENSOR VALUE: " << data.value << std::endl;
 
 	logInfo.close();
 };
@@ -86,7 +85,7 @@ void Server::fileWrite(const SensorData& data) const {
  * @brief split incoming data into sub-functions (if enabled)
  * @param data sensor data
  */
-void Server::dataRcv(const SensorData& data) const {
+void Server::receiveData(const SensorData& data) {
 	if (this->consoleActivated) this->consoleWrite(data);
 	if (this->logsActivated) this->fileWrite(data);
 }
@@ -96,4 +95,4 @@ void Server::dataRcv(const SensorData& data) const {
  * @param server server where to sent data
  * @param data sensor data
  */
-void operator<<(Server &server, const SensorData& data) { server.dataRcv(data); }
+void operator<<(Server &server, const SensorData& data) { server.receiveData(data); }

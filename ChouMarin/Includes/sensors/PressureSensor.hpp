@@ -8,7 +8,7 @@
 #ifndef PRESSURE_SENSOR_H_
 #define PRESSURE_SENSOR_H_
 
-#include "../../../Includes/Sensor.hpp"
+#include "../Sensor.hpp"
 
 class PressureSensor : public Sensor<int> {
 public:

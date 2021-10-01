@@ -5,10 +5,8 @@
  * @brief Pressure sensor class main file
  */
 
-#include "headers/PressureSensor.hpp"
+#include "../../Includes/sensors/PressureSensor.hpp"
 #include "../../Includes/constants.hpp"
-
-using namespace std;
 
 /**
  * @brief Construct a new Pressure Sensor:: Pressure Sensor object
@@ -26,7 +24,7 @@ PressureSensor::~PressureSensor(){};
  */
 const SensorData &PressureSensor::getData() {
   this->value = this->aleaGenVal<int>(1, 1);
-  this->data.value = to_string(this->value);
+  this->data.value = std::to_string(this->value);
 
   return this->data;
 };

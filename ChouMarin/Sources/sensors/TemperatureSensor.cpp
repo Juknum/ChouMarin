@@ -6,10 +6,8 @@
  */
 
 #include <stdio.h>
-#include "./headers/TemperatureSensor.hpp"
+#include "../../Includes/sensors/TemperatureSensor.hpp"
 #include "../../Includes/constants.hpp"
-
-using namespace std;
 
 /**
  * @brief Construct a new Humidity Sensor:: Humidity Sensor object
@@ -22,12 +20,12 @@ TemperatureSensor::TemperatureSensor() : Sensor <float> (e_temperature, e_float)
 TemperatureSensor::~TemperatureSensor() {};
 
 /**
- * @brief get float value of ambient temperature of the submarine (~21 C°)
+ * @brief get float value of ambient temperature of the submarine (~21.5 C°)
  * @return const SensorData& 
  */
 const SensorData &TemperatureSensor::getData() {
-  this->value = this->aleaGenVal<float>(20, 22, 1);
-  this->data.value = to_string(this->value);
+  this->value = this->aleaGenVal<float>(20, 23, 1);
+  this->data.value = std::to_string(this->value);
 
   return this->data;
 }
