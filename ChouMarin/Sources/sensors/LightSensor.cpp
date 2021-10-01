@@ -1,3 +1,10 @@
+/**
+ * @author @Juknum (Julien CONSTANT)
+ * @file Light.cpp
+ * @date 27/09/2021
+ * @brief Light sensor class main file
+ */
+
 #include <string.h>
 #include "headers/LightSensor.hpp"
 #include "../../Includes/constants.hpp"
@@ -10,7 +17,7 @@ LightSensor::LightSensor(): Sensor<bool>(e_light, e_bool) {};
 /**
  * @brief Destroy the Light Sensor:: Light Sensor object
  */
-LightSensor::~LightSensor() { this->data.value = ""; };
+LightSensor::~LightSensor() {};
 
 /**
  * @brief get boolean value of the light sensor (true = light on | false = light off)
@@ -21,4 +28,4 @@ const SensorData& LightSensor::getData() {
   this->data.value = (this->value == 0) ? "false" : "true";
 
   return this->data;
-}
+};

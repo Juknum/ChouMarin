@@ -12,7 +12,7 @@ HumiditySensor::HumiditySensor(): Sensor(e_humidity, e_float) {};
 /**
  * @brief Destroy the Humidity Sensor:: Humidity Sensor object
  */
-HumiditySensor::~HumiditySensor() { this->data.value = ""; };
+HumiditySensor::~HumiditySensor() {};
 
 /**
  * @brief get float value of ambient humidity of the submarine (~10 %)
