@@ -14,53 +14,44 @@
 #include <fstream>
 #include <string>
 
-using namespace std;
-
 class Server
 {
 public:
 
-  /**
-   * @brief default constructor
-   * @return nothing
-   * @param none
-   */
-  Server();
+  //canonical form
+  Server():m_consolActivation(true),m_logActivation(true){};
+  Server(const Server& server_p):m_consolActivation(server_p.m_consolActivation),m_logActivation(server_p.m_logActivation){};
+  virtual ~Server(){};
+  void operator=(const Server& server_p)
+  {
+    this->m_consolActivation = server_p.m_consolActivation;
+    this->m_logActivation = server_p.m_logActivation;
+  };
 
   /**
-   * @brief copy constructor
-   * @return nothing
-   * @param copied Server object reference
+   * @brief constructor for custom boolean values
+   * @return nothing (constructor)
+   * @param bool: console for m_consolActivation and log for m_logActivation
    */
-  Server(const Server& server);
+  Server(bool console_p, bool log_p):m_consolActivation(console_p),m_logActivation(log_p){};
 
   /**
-   * @brief destructor
-   * @return nothing
-   * @param none
+   * @brief << operator overload to format the output of data
+   * @return the output stream (to be able to chain operators up)
+   * @param the output stream
    */
-  virtual ~Server();
+  std::ostream& operator<<(std::ostream& os_p, float data_p)
+  {
+    os_p<<data_p<<"\n";
+    return os_p;
+  };
 
   /**
-   * @brief affectation operator overload
-   * @return nothing
-   * @param copied Server object reference
+   * @brief takes the incomming data and displays/logs it
+   * @return void
+   * @param incomming data: float and the sensor type: string
    */
-  void operator=(const Server& server);
-
-  /**
-   * @brief << operator overload
-   * @return nothing
-   * @param displayed thing
-   */
-  ostream& operator<<(ostream& os, float data);
-
-  /**
-   * @brief
-   * @return
-   * @param
-   */
-  void dataRcv(float data);
+  void dataRcv(float data_p,std::string sensor_p);
 
 private:
 
@@ -69,21 +60,20 @@ private:
    * @return nothing
    * @param incoming data, of float type for now
    */
-  void fileWrite(float data);
+  void fileWrite(float data_p,std::string sensor_p);
 
   /**
    * @brief displays the incoming data in the console
    * @return nothing
    * @param incoming data, of float type for now
    */
-  void consolWrite(float data);
+  void consolWrite(float data_p);
 
   bool m_consolActivation; //enables or disables the console writing
 
   bool m_logActivation; //enables or disables the log file writing
 
 };
-
 
 
 #endif /* SERVER_HPP_ */

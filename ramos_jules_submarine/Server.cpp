@@ -7,55 +7,36 @@
 
 #include "Server.hpp"
 
-Server::Server()
+void Server::dataRcv(float data_p,std::string sensor_p)
 {
-  this->m_consolActivation = true;
-  this->m_logActivation = true;
+  if (this->m_consolActivation==true)
+  {
+    this->consolWrite(data_p);
+  }
+  if (this->m_logActivation==true)
+  {
+    this->fileWrite(data_p, sensor_p);
+  }
 }
 
-Server::Server(const Server& server)
+void Server::fileWrite(float data_p,std::string sensor_p)
 {
-  this->m_consolActivation = server.m_consolActivation;
-  this->m_logActivation = server.m_logActivation;
-}
+  std::string fileName = sensor_p + ".txt";
 
-Server::~Server()
-{
-  //nothing to free here for now;
-}
-
-void Server::operator=(const Server& server)
-{
-  this->m_consolActivation = server.m_consolActivation;
-  this->m_logActivation = server.m_logActivation;
-}
-
-ostream& Server::operator<<(ostream& os, float data)
-{
-  os<<data<<"\n";
-  return os;
-}
-
-void Server::dataRcv(float data)
-{
-  //TODO: this
-}
-
-void Server::fileWrite(float data)
-{
-  ofstream file("log.txt",ios::app); //TODO: different log files depending on the sensor
+  std::ofstream file(fileName,std::ios::app);
   if(!file.is_open())
   {
-    std::cout<<"log file couldn't be opened!\n";
+    std::cout<<sensor_p<<" log file couldn't be opened!\n";
   }
   else
   {
-    file<<data;
+    file<<data_p;
   }
   file.close();
+  delete fileName;
 }
 
-void Server::consolWrite(float data)
+void Server::consolWrite(float data_p)
 {
-  std::cout<<data;
+  std::cout<<data_p;
 }

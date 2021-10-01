@@ -1,32 +1,31 @@
 /**
  * @author Jules Ramos
  * @file Server.cpp
- * @date 22/09/2021
- * @brief Type and method declaration for the Humidity class
+ * @date 01/10/2021
+ * @brief Type and method declaration for the Pressure class
  */
 
-//
-//Define guards
-#ifndef HUMIDITY_HPP_
-#define HUMIDITY_HPP_
+#ifndef PRESSURE_HPP_
+#define PRESSURE_HPP_
+
 
 #include "Sensor.hpp"
 
-class Humidity: public Sensor
+class Pressure: public Sensor
 {
 public:
 
-  Humidity():m_sensorType("humidity"){};
-  Humidity(const Humidity& humidity_p):m_sensorType(humidity_p.m_sensorType){};
-  ~Humidity()
+  Pressure():m_sensorType("Pressure"){};
+  Pressure(const Pressure& pressure_p):m_sensorType(pressure_p.m_sensorType){};
+  ~Pressure()
   {
     delete m_sensorType;
   };
 
 
-  void operator=(const Humidity& humidity_p)
+  void operator=(const Pressure& pressure_p)
   {
-    this->m_sensorType = humidity_p.m_sensorType;
+    this->m_sensorType = pressure_p.m_sensorType;
   };
 
   /**
@@ -47,5 +46,4 @@ private:
 };
 
 
-
-#endif /* HUMIDITY_HPP_ */
+#endif /* PRESSURE_HPP_ */

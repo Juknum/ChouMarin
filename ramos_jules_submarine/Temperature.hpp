@@ -2,7 +2,7 @@
  * @author Jules Ramos
  * @file Server.cpp
  * @date 22/09/2021
- * @brief
+ * @brief Type and method declaration for the Temperature class
  */
 
 //
@@ -10,7 +10,41 @@
 #ifndef TEMPERATURE_HPP_
 #define TEMPERATURE_HPP_
 
+#include "Sensor.hpp"
 
+class Temperature: public Sensor
+{
+public:
+
+  Temperature():m_sensorType("temperature"){};
+  Temperature(const Temperature& temperature_p):m_sensorType(temperature_p.m_sensorType){};
+  ~Temperature()
+  {
+    delete m_sensorType;
+  };
+
+
+  void operator=(const Temperature& temperature_p)
+  {
+    this->m_sensorType = temperature_p.m_sensorType;
+  };
+
+  /**
+   * @brief calls upon aleaGenVal and gives the generated data
+   * @return the generated data: float
+   * @param none
+   */
+  float getData();
+
+private:
+
+  /**
+   * @brief generates a random value of data
+   * @return a float: the new data value
+   * @param none
+   */
+  float aleaGenVal();
+};
 
 
 

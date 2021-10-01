@@ -2,7 +2,7 @@
  * @author Jules Ramos
  * @file Sensor.hpp
  * @date 21/09/2021
- * @brief Type and method declaration for the Sensor class
+ * @brief Type and method declaration for the abstract Sensor class
  */
 
 //
@@ -11,67 +11,27 @@
 #define SENSOR_HPP_
 
 #include <cstdlib>
+#include <string>
 
-class Sensor
+virtual class Sensor
 {
 public:
 
-  /**
-   * @brief default constructor
-   * @return nothing
-   * @param none
-   */
-  Sensor();
-
-  /**
-   * @brief copy constructor
-   * @return nothing
-   * @param copied Sensor object reference
-   */
-  Sensor(const Sensor& sensor);
-
-  /**
-   * @brief constructor with a specific m_data initialization
-   * @return nothing
-   * @param float: wanted value for m_data
-   */
-  Sensor(float data);
-
-  /**
-   * @brief destructor
-   * @return nothing
-   * @param none
-   */
+  //this is an abstract class therefore there is no canonical form other than a virtual destructor
   virtual ~Sensor();
-
-  /**
-   * @brief = operator overload
-   * @return nothing
-   * @param Sensor object reference
-   */
-  void operator=(const Sensor& sensor);
-
-  /**
-   * @brief getter for the m_data attribute
-   * @return m_data, float
-   * @param none
-   */
-  float getData();
 
 protected:
 
   /**
-   * @brief generates a random value for the m_data attribute
+   * @brief generates a random value of data
    * @return a float: the new data value
    * @param none
    */
-  float aleaGenVal();
+  virtual float aleaGenVal()=0;
 
 private:
 
-  float m_data; // stocks the data "measured" by the sensor until it is sent
+  std::string m_sensorType; //stocks the kind of sensor initialized for an easier log file finding
 };
-
-
 
 #endif /* SENSOR_HPP_ */

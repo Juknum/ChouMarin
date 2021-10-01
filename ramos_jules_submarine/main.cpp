@@ -6,8 +6,6 @@
  */
 
 #include "Scheduler.hpp"
-#include "Server.hpp"
-#include "Sensor.hpp"
 #include <iostream>
 
 int main()
@@ -15,3 +13,5 @@ int main()
   float data = 12;
   std::cout<<"start\n"<<"data = "<<data<<"\n";
 }
+
+//330m!!!
