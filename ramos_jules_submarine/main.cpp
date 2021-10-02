@@ -11,7 +11,8 @@
 int main()
 {
   float data = 12;
-  std::cout<<"start\n"<<"data = "<<data<<"\n";
+  std::cout<<"start\n"<<"data = "<<data<<std::endl;
+  std::cout<<"test completed"<<std::endl;
 }
 
-//330m!!!
+//300m!!! de profondeur

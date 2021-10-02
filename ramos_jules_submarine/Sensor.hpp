@@ -13,12 +13,12 @@
 #include <cstdlib>
 #include <string>
 
-virtual class Sensor
+class Sensor
 {
 public:
 
   //this is an abstract class therefore there is no canonical form other than a virtual destructor
-  virtual ~Sensor();
+  virtual ~Sensor(){};
 
 protected:
 
@@ -29,9 +29,10 @@ protected:
    */
   virtual float aleaGenVal()=0;
 
+  std::string m_sensorType; //stocks the kind of sensor initialized for an easier log file finding
+
 private:
 
-  std::string m_sensorType; //stocks the kind of sensor initialized for an easier log file finding
 };
 
 #endif /* SENSOR_HPP_ */

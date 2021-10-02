@@ -16,18 +16,10 @@ class Humidity: public Sensor
 {
 public:
 
-  Humidity():m_sensorType("humidity"){};
-  Humidity(const Humidity& humidity_p):m_sensorType(humidity_p.m_sensorType){};
-  ~Humidity()
-  {
-    delete m_sensorType;
-  };
-
-
-  void operator=(const Humidity& humidity_p)
-  {
-    this->m_sensorType = humidity_p.m_sensorType;
-  };
+  Humidity();
+  Humidity(const Humidity& humidity_p);
+  ~Humidity();
+  void operator=(const Humidity& humidity_p);
 
   /**
    * @brief calls upon aleaGenVal and gives the generated data

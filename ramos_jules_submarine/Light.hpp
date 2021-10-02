@@ -16,18 +16,10 @@ class Light: public Sensor
 {
 public:
 
-  Light():m_sensorType("light"){};
-  Light(const Light& light_p):m_sensorType(light_p.m_sensorType){};
-  ~Light()
-  {
-    delete m_sensorType;
-  };
-
-
-  void operator=(const Light& light_p)
-  {
-    this->m_sensorType = light_p.m_sensorType;
-  };
+  Light();
+  Light(const Light& light_p);
+  ~Light();
+  void operator=(const Light& light_p);
 
   /**
    * @brief calls upon aleaGenVal and gives the generated data

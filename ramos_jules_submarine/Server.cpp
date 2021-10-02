@@ -26,17 +26,16 @@ void Server::fileWrite(float data_p,std::string sensor_p)
   std::ofstream file(fileName,std::ios::app);
   if(!file.is_open())
   {
-    std::cout<<sensor_p<<" log file couldn't be opened!\n";
+    std::cout<<sensor_p<<" log file couldn't be opened"<<std::endl;
   }
   else
   {
-    file<<data_p;
+    file<<data_p<<"\n";
   }
   file.close();
-  delete fileName;
 }
 
 void Server::consolWrite(float data_p)
 {
-  std::cout<<data_p;
+  std::cout<<data_p<<std::endl;
 }

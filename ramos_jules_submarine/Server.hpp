@@ -36,17 +36,6 @@ public:
   Server(bool console_p, bool log_p):m_consolActivation(console_p),m_logActivation(log_p){};
 
   /**
-   * @brief << operator overload to format the output of data
-   * @return the output stream (to be able to chain operators up)
-   * @param the output stream
-   */
-  std::ostream& operator<<(std::ostream& os_p, float data_p)
-  {
-    os_p<<data_p<<"\n";
-    return os_p;
-  };
-
-  /**
    * @brief takes the incomming data and displays/logs it
    * @return void
    * @param incomming data: float and the sensor type: string

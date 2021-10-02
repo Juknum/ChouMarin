@@ -15,18 +15,10 @@ class Pression: public Sensor
 {
 public:
 
-  Pression():m_sensorType("Pression"){};
-  Pression(const Pression& pression_p):m_sensorType(pression_p.m_sensorType){};
-  ~Pression()
-  {
-    delete m_sensorType;
-  };
-
-
-  void operator=(const Pression& pression_p)
-  {
-    this->m_sensorType = pression_p.m_sensorType;
-  };
+  Pression();
+  Pression(const Pression& pression_p);
+  ~Pression();
+  void operator=(const Pression& pression_p);
 
   /**
    * @brief calls upon aleaGenVal and gives the generated data

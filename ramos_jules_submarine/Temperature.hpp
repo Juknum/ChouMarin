@@ -16,18 +16,10 @@ class Temperature: public Sensor
 {
 public:
 
-  Temperature():m_sensorType("temperature"){};
-  Temperature(const Temperature& temperature_p):m_sensorType(temperature_p.m_sensorType){};
-  ~Temperature()
-  {
-    delete m_sensorType;
-  };
-
-
-  void operator=(const Temperature& temperature_p)
-  {
-    this->m_sensorType = temperature_p.m_sensorType;
-  };
+  Temperature();
+  Temperature(const Temperature& temperature_p);
+  ~Temperature();
+  void operator=(const Temperature& temperature_p);
 
   /**
    * @brief calls upon aleaGenVal and gives the generated data

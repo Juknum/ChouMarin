@@ -30,7 +30,7 @@ private:
   Temperature m_temperature;
   Humidity m_humidity;
   Sound m_sound;
-  Pressure m_pressure;
+  Pression m_pression;
 };
 
 #endif /* SCHEDULER_HPP_ */

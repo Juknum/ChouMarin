@@ -16,18 +16,10 @@ class Sound: public Sensor
 {
 public:
 
-  Sound():m_sensorType("sound"){};
-  Sound(const Sound& sound_p):m_sensorType(sound_p.m_sensorType){};
-  ~Sound()
-  {
-    delete m_sensorType;
-  };
-
-
-  void operator=(const Sound& sound_p)
-  {
-    this->m_sensorType = sound_p.m_sensorType;
-  };
+  Sound();
+  Sound(const Sound& sound_p);
+  ~Sound();
+  void operator=(const Sound& sound_p);
 
   /**
    * @brief calls upon aleaGenVal and gives the generated data
