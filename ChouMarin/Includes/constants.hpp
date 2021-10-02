@@ -13,7 +13,8 @@
 /**
  * @brief types for data value of a sensor
  */
-enum DataType {
+enum DataType
+{
 	e_unknown_data,
 	e_float,
 	e_int,
@@ -23,7 +24,8 @@ enum DataType {
 /**
  * @brief types (names) for sensor
  */
-enum SensorType {
+enum SensorType
+{
 	e_unknown_type,
 	e_temperature,
 	e_humidity,
@@ -35,7 +37,8 @@ enum SensorType {
  * @brief corresponding enum to strings
  * ! strings must match position of their corresponding enum
  */
-const std::string SensorTypeStrings[5] {
+const std::string SensorTypeStrings[5]
+{
 	"UNKNOWN_TYPE",
 	"TEMPERATURE ",
 	"HUMIDITY    ",
@@ -47,7 +50,8 @@ const std::string SensorTypeStrings[5] {
  * @brief corresponding enum to file names
  * ! strings must match position of their corresponding enum
  */
-const std::string SensorTypeFileNames[5] {
+const std::string SensorTypeFileNames[5]
+{
 	"sensor_unknown",
 	"sensor_temperature",
 	"sensor_humidity",
@@ -61,7 +65,8 @@ const std::string SensorTypeFileNames[5] {
  * @param DataType type of data (int, float...)
  * @param value value of the data
  */
-typedef struct s_SensorData {
+typedef struct s_SensorData
+{
 	SensorType sensorType;
 	DataType dataType;
 	std::string value;

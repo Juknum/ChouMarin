@@ -10,11 +10,12 @@
 
 #include "../Sensor.hpp"
 
-class HumiditySensor: public Sensor<float> {
-  public:
-    HumiditySensor();
-    virtual ~HumiditySensor();
-    const SensorData& getData();
+class HumiditySensor : public Sensor<float>
+{
+public:
+	HumiditySensor();
+	virtual ~HumiditySensor();
+	const SensorData& getData();
 };
 
 #endif // HUMIDITY_SENSOR_H_

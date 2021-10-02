@@ -10,4 +10,4 @@
     - [Fichiers sources `.cpp`: `Sources/*`](https://github.com/Aldarme/TPAP4A/tree/Constant_Julien_TPMM/ChouMarin/Sources)
     - [Fichiers headers `.hpp`: `Includes/*`](https://github.com/Aldarme/TPAP4A/tree/Constant_Julien_TPMM/ChouMarin/Includes)
     - [Fichiers logs `.log`: `Logs/*`](https://github.com/Aldarme/TPAP4A/tree/Constant_Julien_TPMM/ChouMarin/Logs)
-    - [Fichiers de compilation: `Debug/*`](https://github.com/Aldarme/TPAP4A/tree/Constant_Julien_TPMM/ChouMarin/Logs)
+    - Fichiers de compilation: `Debug/*`

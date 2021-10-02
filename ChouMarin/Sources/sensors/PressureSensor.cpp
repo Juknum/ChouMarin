@@ -2,7 +2,7 @@
  * @author @Juknum (Julien CONSTANT)
  * @file PressureSensor.cpp
  * @date 27/09/2021
- * @brief Pressure sensor class main file
+ * @brief Pressure sensor class main file, herited from Sensor class
  */
 
 #include "../../Includes/sensors/PressureSensor.hpp"
@@ -22,9 +22,10 @@ PressureSensor::~PressureSensor(){};
  * @brief get integer value of the pressure sensor (~ 1)
  * @return const SensorData& 
  */
-const SensorData &PressureSensor::getData() {
-  this->value = this->aleaGenVal<int>(1, 1);
-  this->data.value = std::to_string(this->value);
+const SensorData& PressureSensor::getData()
+{
+	this->m_value = this->aleaGenVal<int>(1, 1);
+	this->m_data.value = std::to_string(this->m_value);
 
-  return this->data;
+	return this->m_data;
 };

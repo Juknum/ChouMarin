@@ -10,11 +10,12 @@
 
 #include "../Sensor.hpp"
 
-class PressureSensor : public Sensor<int> {
+class PressureSensor : public Sensor<int>
+{
 public:
-  PressureSensor();
-  virtual ~PressureSensor();
-  const SensorData &getData();
+	PressureSensor();
+	virtual ~PressureSensor();
+	const SensorData& getData();
 };
 
 #endif // PRESSURE_SENSOR_H_

@@ -10,11 +10,12 @@
 
 #include "../Sensor.hpp"
 
-class LightSensor: public Sensor<bool> {
-  public:
-    LightSensor();
-    virtual ~LightSensor();
-    const SensorData& getData();
+class LightSensor : public Sensor<bool>
+{
+public:
+	LightSensor();
+	virtual ~LightSensor();
+	const SensorData& getData();
 };
 
 #endif // LIGHT_SENSOR_H_

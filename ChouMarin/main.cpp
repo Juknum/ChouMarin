@@ -13,7 +13,7 @@
 #include "./Includes/Scheduler.hpp"
 
 int main(int argc, char const *argv[]) {
-  Scheduler sc; // Start the scheduler
+	Scheduler sc; // Start the scheduler
 
-  return 0;
+	return 0;
 }

@@ -10,11 +10,12 @@
 
 #include "../Sensor.hpp"
 
-class TemperatureSensor: public Sensor<float> {
-  public:
-    TemperatureSensor();
-    virtual ~TemperatureSensor();
-    const SensorData& getData();
+class TemperatureSensor : public Sensor<float>
+{
+public:
+	TemperatureSensor();
+	virtual ~TemperatureSensor();
+	const SensorData& getData();
 };
 
 #endif // TEMPERATURE_SENSOR_H_

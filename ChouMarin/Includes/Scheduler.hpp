@@ -17,33 +17,35 @@
 #include "sensors/TemperatureSensor.hpp"
 #include "sensors/PressureSensor.hpp"
 
-class TimeInterval {
-  friend class Scheduler;
-
-  private:
-    SensorType sensorType;
-    clock_t tClock;
-    int duration; // duration in ms
-  public:
-    TimeInterval();
-    TimeInterval(SensorType sensorType, int duration);
-    virtual ~TimeInterval();
-    bool checkTime();
-};
-
-class Scheduler {
-public:
-  Scheduler();
-  virtual ~Scheduler();
+class TimeInterval
+{
+	friend class Scheduler; // to easily access this class from the scheduler
 
 private:
-  Server server;
-  LightSensor lightSensor;
-  HumiditySensor humiditySensor;
-  TemperatureSensor temperatureSensor;
-  PressureSensor pressureSensor;
-  std::vector<SensorBase*> listSensors;
-  std::vector<TimeInterval> timeInterval;
+	SensorType m_sensorType;
+	clock_t m_clock;
+	int m_duration; // duration in ms
+public:
+	TimeInterval();
+	TimeInterval(SensorType sensorType, int duration);
+	virtual ~TimeInterval();
+	bool checkTime();
+};
+
+class Scheduler
+{
+public:
+	Scheduler();
+	virtual ~Scheduler();
+
+private:
+	Server server;
+	LightSensor lightSensor;
+	HumiditySensor humiditySensor;
+	TemperatureSensor temperatureSensor;
+	PressureSensor pressureSensor;
+	std::vector<SensorBase*> listSensors;
+	std::vector<TimeInterval> timeInterval;
 };
 
 #endif // SCHEDULER_H_
