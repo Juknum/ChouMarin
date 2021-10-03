@@ -9,12 +9,12 @@
 
 Sound::Sound()
 {
-  m_sensorType="sound";
+  this->m_sensorType="sound";
 };
 
 Sound::Sound(const Sound& sound_p)
 {
-  m_sensorType = sound_p.m_sensorType;
+  this->m_sensorType = sound_p.m_sensorType;
 };
 
 Sound::~Sound(){};
@@ -26,7 +26,7 @@ void Sound::operator=(const Sound& sound_p)
 
 float Sound::aleaGenVal()
 {
-  return rand()%100; //from 0 to 99, placeholder, to be reworked after the inheritance
+  return rand()%30 + 55; //from 55 to 84 dB, will stay an integer
 }
 
 float Sound::getData()

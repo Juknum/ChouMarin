@@ -8,15 +8,18 @@
 #include "Scheduler.hpp"
 #include "Server.hpp"
 #include <iostream>
+#include <ctime>
 
 int main()
 {
-  float data = 12;
-  std::cout<<"start\n"<<"data = "<<data<<std::endl;
-  std::cout<<"test completed"<<std::endl;
 
-  Server serv;
-  serv.dataRcv(5, "test");
+  srand (time(NULL));
+  std::cout<<"start"<<std::endl;
+
+  Scheduler schedul;
+  schedul.Launch();
+
+  std::cout<<"test completed"<<std::endl;
 }
 
 //300m!!! de profondeur

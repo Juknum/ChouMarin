@@ -10,6 +10,13 @@
 #ifndef SCHEDULER_HPP_
 #define SCHEDULER_HPP_
 
+#include <chrono>
+#include <thread>
+/*
+ * making the assumption this code will be compiled and run with at least C++1 to get a
+ * crossplatform and included in the c++ standards waiting solution
+ */
+
 #include "Server.hpp"
 #include "Light.hpp"
 #include "Temperature.hpp"
@@ -34,8 +41,18 @@ public:
   Scheduler(bool console_p,bool log_p);
 
   /**
-   * @brief loop of data collecting and writing, basically the core of this program
-   * @return none, m_server handles the output
+   * @brief invokes the dataReceive of a Server with the proper methods of a sensor,
+   * automating the link between servers and sensors for a better extensibility
+   * !!! T must be a derived class of Sensor !!! template makes this method usable for all of them
+   * @return none, the server handles the output
+   * @param Server: output server, Sensor: the sensor that the server must collect data from
+   */
+
+  template <class T> void SendToServer(Server& server_p, T& sensor_p);
+
+  /**
+   * @brief loop of data collecting and writing, basically the core of this program, calls upon the SendToServer method
+   * @return none, SendToServer handles the output
    * @param none for now, might add custom collect time intervals for the final version
    */
   void Launch();

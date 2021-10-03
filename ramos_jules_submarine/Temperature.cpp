@@ -9,12 +9,12 @@
 
 Temperature::Temperature()
 {
-  m_sensorType="temperature";
+  this->m_sensorType="temperature";
 };
 
 Temperature::Temperature(const Temperature& temperature_p)
 {
-  m_sensorType=temperature_p.m_sensorType;
+  this->m_sensorType=temperature_p.m_sensorType;
 };
 
 Temperature::~Temperature(){};
@@ -26,7 +26,7 @@ void Temperature::operator=(const Temperature& temperature_p)
 
 float Temperature::aleaGenVal()
 {
-  return rand()%100; //from 0 to 99, placeholder, to be reworked after the inheritance
+  return (rand()%110+150)/10; //from 15.0 to 25.9, will stay a float
 }
 
 float Temperature::getData()

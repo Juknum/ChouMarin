@@ -9,12 +9,12 @@
 
 Light::Light()
 {
-  m_sensorType="light";
+  this->m_sensorType="light";
 };
 
 Light::Light(const Light& light_p)
 {
-  m_sensorType=light_p.m_sensorType;
+  this->m_sensorType=light_p.m_sensorType;
 };
 
 Light::~Light(){};
@@ -26,7 +26,7 @@ void Light::operator=(const Light& light_p)
 
 float Light::aleaGenVal()
 {
-  return rand()%100; //from 0 to 99, placeholder, to be reworked after the inheritance
+  return rand()%2; //0 or 1, will become boolean
 }
 
 float Light::getData()

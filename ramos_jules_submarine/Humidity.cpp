@@ -9,12 +9,12 @@
 
 Humidity::Humidity()
 {
-  m_sensorType = "humidity";
+  this->m_sensorType = "humidity";
 };
 
 Humidity::Humidity(const Humidity& humidity_p)
 {
-  m_sensorType=humidity_p.m_sensorType;
+  this->m_sensorType=humidity_p.m_sensorType;
 };
 
 Humidity::~Humidity(){};
@@ -26,7 +26,7 @@ void Humidity::operator=(const Humidity& humidity_p)
 
 float Humidity::aleaGenVal()
 {
-  return rand()%100; //from 0 to 99, placeholder, to be reworked after the inheritance
+  return (rand()%351+400)/10; //from 40.0 to 75.0, will stay a float
 }
 
 float Humidity::getData()

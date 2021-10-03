@@ -45,18 +45,25 @@ public:
 private:
 
   /**
+   * @brief automates the unit output for each sensor, basically a text formatting method
+   * @return string: relevant unit
+   * @param string: sensor's type
+   */
+  std::string unitSelection(std::string sensor_p);
+
+  /**
    * @brief writes the data of each sensor in its designed log file
    * @return nothing
-   * @param incoming data, of float type for now
+   * @param incoming data, of float type for now, string: sensor type to select the log file and unit
    */
   void fileWrite(float data_p,std::string sensor_p);
 
   /**
    * @brief displays the incoming data in the console
    * @return nothing
-   * @param incoming data, of float type for now
+   * @param incoming data, of float type for now; string: sensor type to select the unit
    */
-  void consolWrite(float data_p);
+  void consolWrite(float data_p,std::string sensor_p);
 
   bool m_consolActivation; //enables or disables the console writing
 

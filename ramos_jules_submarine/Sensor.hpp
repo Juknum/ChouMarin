@@ -12,6 +12,7 @@
 
 #include <cstdlib>
 #include <string>
+#include <ctime>
 
 class Sensor
 {
@@ -19,6 +20,13 @@ public:
 
   //this is an abstract class therefore there is no canonical form other than a virtual destructor
   virtual ~Sensor(){};
+
+  /**
+   * @brief getter for the m_sensorType attribute
+   * @return string: m_sensorType
+   * @param none
+   */
+  std::string getSensorType();
 
 protected:
 

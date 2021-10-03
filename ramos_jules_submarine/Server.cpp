@@ -11,12 +11,37 @@ void Server::dataRcv(float data_p,std::string sensor_p)
 {
   if (this->m_consolActivation==true)
   {
-    this->consolWrite(data_p);
+    this->consolWrite(data_p,sensor_p);
   }
   if (this->m_logActivation==true)
   {
     this->fileWrite(data_p, sensor_p);
   }
+}
+
+std::string Server::unitSelection(std::string sensor_p)
+{ // can't use a switch, might have to be reworked later on
+  if (sensor_p=="humidity")
+  {
+    return "% in the air";
+  }
+
+  if (sensor_p=="temperature")
+  {
+    return "°C";
+  }
+
+  if (sensor_p=="pression")
+  {
+    return "hPa";
+  }
+
+  if (sensor_p=="sound")
+  {
+    return "dB";
+  }
+
+  return " "; //case of light
 }
 
 void Server::fileWrite(float data_p,std::string sensor_p)
@@ -30,12 +55,12 @@ void Server::fileWrite(float data_p,std::string sensor_p)
   }
   else
   {
-    file<<data_p<<"\n";
+    file<<data_p<<this->unitSelection(sensor_p)<<"\n";
   }
   file.close();
 }
 
-void Server::consolWrite(float data_p)
+void Server::consolWrite(float data_p,std::string sensor_p)
 {
-  std::cout<<data_p<<std::endl;
+  std::cout<<data_p<<this->unitSelection(sensor_p)<<std::endl;
 }

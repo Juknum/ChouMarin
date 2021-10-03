@@ -38,6 +38,4 @@ private:
   float aleaGenVal();
 };
 
-
-
 #endif /* TEMPERATURE_HPP_ */
