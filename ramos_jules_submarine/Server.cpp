@@ -21,7 +21,7 @@ void Server::dataRcv(float data_p,std::string sensor_p)
 
 void Server::fileWrite(float data_p,std::string sensor_p)
 {
-  std::string fileName = sensor_p + ".txt";
+  std::string fileName = "../" + sensor_p + ".txt"; //for clarity, log files are created outside of the source code folder
 
   std::ofstream file(fileName,std::ios::app);
   if(!file.is_open())

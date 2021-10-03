@@ -31,7 +31,7 @@ public:
   /**
    * @brief constructor for custom boolean values
    * @return nothing (constructor)
-   * @param bool: console for m_consolActivation and log for m_logActivation
+   * @param bool: console_p for m_consolActivation and log_p for m_logActivation
    */
   Server(bool console_p, bool log_p):m_consolActivation(console_p),m_logActivation(log_p){};
 

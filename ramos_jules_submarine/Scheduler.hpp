@@ -22,6 +22,23 @@ class Scheduler
 public:
 
   Scheduler();
+  Scheduler(const Scheduler& scheduler_p);
+  ~Scheduler();
+  void operator=(const Scheduler& scheduler_p);
+
+  /**
+   * @brief constructor for a custom server log and console activation
+   * @return none (constructor)
+   * @param log_p: bool, becomes logActivation in the server; console_p: bool, becomes logActivation
+   */
+  Scheduler(bool console_p,bool log_p);
+
+  /**
+   * @brief loop of data collecting and writing, basically the core of this program
+   * @return none, m_server handles the output
+   * @param none for now, might add custom collect time intervals for the final version
+   */
+  void Launch();
 
 private:
 

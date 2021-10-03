@@ -6,6 +6,7 @@
  */
 
 #include "Scheduler.hpp"
+#include "Server.hpp"
 #include <iostream>
 
 int main()
@@ -13,6 +14,9 @@ int main()
   float data = 12;
   std::cout<<"start\n"<<"data = "<<data<<std::endl;
   std::cout<<"test completed"<<std::endl;
+
+  Server serv;
+  serv.dataRcv(5, "test");
 }
 
 //300m!!! de profondeur
