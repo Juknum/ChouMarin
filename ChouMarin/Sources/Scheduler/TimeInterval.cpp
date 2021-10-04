@@ -1,15 +1,9 @@
 /**
- * @file main.cpp
+ * @file TimeInterval.cpp
  * @author @Juknum - Julien CONSTANT (julien.constant@utbm.fr)
- * @brief AP4A Project : 
- *  Creation of a submarine IOT environment simulator;
- *  modeling an ecosystem of sensors based on 4 type of sensors inside the submarine:
- *  - temperature,
- *  - light,
- *  - humidity,
- *  - pressure.
+ * @brief Manage time & check time of each sensor
+ * @date 2021-10-04
  * 
- * @date 2021-09-21
  * @copyright MIT License
  * > Copyright (c) 2021 Julien Constant
  *
@@ -32,10 +26,36 @@
  * ! SOFTWARE.
  */
 
-#include "./Sources/Scheduler/Scheduler.hpp"
+#include "TimeInterval.hpp"
 
-int main(int argc, char const *argv[]) {
-	Scheduler sc; // Start the scheduler
+/**
+ * @brief Construct a new Time Interval:: Time Interval object with default values
+ */
+TimeInterval::TimeInterval() : m_sensorType(e_unknown_type), m_clock(), m_duration(1000){};
 
-	return 0;
+/**
+ * @brief Construct a new Time Interval:: Time Interval object with given values
+ * @param sT SensorType 
+ * @param ms Duration between checks
+ */
+TimeInterval::TimeInterval(SensorType sT, int ms) : m_sensorType(sT), m_clock(), m_duration(ms){};
+
+/**
+ * @brief Destroy the Time Interval:: Time Interval object
+ */
+TimeInterval::~TimeInterval(){};
+
+/**
+ * @brief check if the actual time is the time where we need to check the sensor (oof)
+ * @return true if this is the time
+ * @return false either
+ */
+bool TimeInterval::checkTime()
+{
+  if ((double)(clock() - this->m_clock) * 1000 / CLOCKS_PER_SEC >= this->m_duration)
+  {
+    this->m_clock = clock();
+    return true;
+  }
+  return false;
 }

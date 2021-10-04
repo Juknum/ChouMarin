@@ -1,15 +1,9 @@
 /**
- * @file main.cpp
+ * @file SensorBase.cpp
  * @author @Juknum - Julien CONSTANT (julien.constant@utbm.fr)
- * @brief AP4A Project : 
- *  Creation of a submarine IOT environment simulator;
- *  modeling an ecosystem of sensors based on 4 type of sensors inside the submarine:
- *  - temperature,
- *  - light,
- *  - humidity,
- *  - pressure.
+ * @brief Sensor base for all sensors
+ * @date 2021-10-04
  * 
- * @date 2021-09-21
  * @copyright MIT License
  * > Copyright (c) 2021 Julien Constant
  *
@@ -32,10 +26,25 @@
  * ! SOFTWARE.
  */
 
-#include "./Sources/Scheduler/Scheduler.hpp"
+#include "SensorBase.hpp"
 
-int main(int argc, char const *argv[]) {
-	Scheduler sc; // Start the scheduler
+/**
+ * @brief Construct a new Sensor Base:: Sensor Base object with default values
+ */
+SensorBase::SensorBase()
+{
+  this->m_data.sensorType = e_unknown_type;
+  this->m_data.dataType = e_unknown_data;
+};
 
-	return 0;
-}
+/**
+ * @brief Construct a new Sensor Base:: Sensor Base object with values
+ * @param sT sensor type 
+ * @param dT sensor data type
+ */
+SensorBase::SensorBase(SensorType sT, DataType dT)
+{
+  this->m_data.sensorType = sT;
+  this->m_data.dataType = dT;
+  this->m_data.value = "";
+};

@@ -1,15 +1,9 @@
 /**
- * @file main.cpp
+ * @file PressureSensor.cpp
  * @author @Juknum - Julien CONSTANT (julien.constant@utbm.fr)
- * @brief AP4A Project : 
- *  Creation of a submarine IOT environment simulator;
- *  modeling an ecosystem of sensors based on 4 type of sensors inside the submarine:
- *  - temperature,
- *  - light,
- *  - humidity,
- *  - pressure.
+ * @brief Pressure sensor
+ * @date 2021-09-27
  * 
- * @date 2021-09-21
  * @copyright MIT License
  * > Copyright (c) 2021 Julien Constant
  *
@@ -32,10 +26,26 @@
  * ! SOFTWARE.
  */
 
-#include "./Sources/Scheduler/Scheduler.hpp"
+#include "PressureSensor.hpp"
 
-int main(int argc, char const *argv[]) {
-	Scheduler sc; // Start the scheduler
+/**
+ * @brief Construct a new Pressure Sensor:: Pressure Sensor object
+ */
+PressureSensor::PressureSensor() : Sensor<int>(e_pressure, e_int){};
 
-	return 0;
-}
+/**
+ * @brief Destroy the Pressure Sensor:: Pressure Sensor object
+ */
+PressureSensor::~PressureSensor(){};
+
+/**
+ * @brief get integer value of the pressure sensor (= 1)
+ * @return const SensorData& 
+ */
+const SensorData& PressureSensor::getData()
+{
+	this->m_value = this->aleaGenVal<int>(1, 1);
+	this->m_data.value = std::to_string(this->m_value);
+
+	return this->m_data;
+};

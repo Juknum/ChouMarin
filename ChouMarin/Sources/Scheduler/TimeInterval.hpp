@@ -1,15 +1,9 @@
 /**
- * @file main.cpp
+ * @file TimeInterval.hpp
  * @author @Juknum - Julien CONSTANT (julien.constant@utbm.fr)
- * @brief AP4A Project : 
- *  Creation of a submarine IOT environment simulator;
- *  modeling an ecosystem of sensors based on 4 type of sensors inside the submarine:
- *  - temperature,
- *  - light,
- *  - humidity,
- *  - pressure.
+ * @brief Manage time for sensors
+ * @date 2021-10-04
  * 
- * @date 2021-09-21
  * @copyright MIT License
  * > Copyright (c) 2021 Julien Constant
  *
@@ -32,10 +26,25 @@
  * ! SOFTWARE.
  */
 
-#include "./Sources/Scheduler/Scheduler.hpp"
+#ifndef TIME_INTERVAL_HPP_
+#define TIME_INTERVAL_HPP_
 
-int main(int argc, char const *argv[]) {
-	Scheduler sc; // Start the scheduler
+#include <time.h>
+#include "../constants.hpp"
 
-	return 0;
-}
+class TimeInterval
+{
+  friend class Scheduler; // to easily access this class from the scheduler
+
+private:
+  SensorType m_sensorType;
+  clock_t m_clock;
+  int m_duration; // duration in ms
+public:
+  TimeInterval();
+  TimeInterval(SensorType sensorType, int duration);
+  virtual ~TimeInterval();
+  bool checkTime();
+};
+
+#endif // TIME_INTERVAL_HPP_

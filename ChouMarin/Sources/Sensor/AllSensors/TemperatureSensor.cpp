@@ -1,15 +1,9 @@
 /**
- * @file main.cpp
+ * @file TemperatureSensor.cpp
  * @author @Juknum - Julien CONSTANT (julien.constant@utbm.fr)
- * @brief AP4A Project : 
- *  Creation of a submarine IOT environment simulator;
- *  modeling an ecosystem of sensors based on 4 type of sensors inside the submarine:
- *  - temperature,
- *  - light,
- *  - humidity,
- *  - pressure.
+ * @brief Temperature sensor
+ * @date 2021-09-30
  * 
- * @date 2021-09-21
  * @copyright MIT License
  * > Copyright (c) 2021 Julien Constant
  *
@@ -32,10 +26,26 @@
  * ! SOFTWARE.
  */
 
-#include "./Sources/Scheduler/Scheduler.hpp"
+#include "TemperatureSensor.hpp"
 
-int main(int argc, char const *argv[]) {
-	Scheduler sc; // Start the scheduler
+/**
+ * @brief Construct a new Humidity Sensor:: Humidity Sensor object
+ */
+TemperatureSensor::TemperatureSensor() : Sensor<float>(e_temperature, e_float){};
 
-	return 0;
+/**
+ * @brief Destroy the Humidity Sensor:: Humidity Sensor object
+ */
+TemperatureSensor::~TemperatureSensor(){};
+
+/**
+ * @brief get float value of ambient temperature of the submarine (~21.25 C°)
+ * @return const SensorData& 
+ */
+const SensorData& TemperatureSensor::getData()
+{
+	this->m_value = this->aleaGenVal<float>(21.01, 21.73);
+	this->m_data.value = std::to_string(this->m_value);
+
+	return this->m_data;
 }

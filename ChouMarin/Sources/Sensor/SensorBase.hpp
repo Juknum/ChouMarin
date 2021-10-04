@@ -1,15 +1,9 @@
 /**
- * @file main.cpp
+ * @file SensorBase.hpp
  * @author @Juknum - Julien CONSTANT (julien.constant@utbm.fr)
- * @brief AP4A Project : 
- *  Creation of a submarine IOT environment simulator;
- *  modeling an ecosystem of sensors based on 4 type of sensors inside the submarine:
- *  - temperature,
- *  - light,
- *  - humidity,
- *  - pressure.
+ * @brief Sensor base for all sensors
+ * @date 2021-10-04
  * 
- * @date 2021-09-21
  * @copyright MIT License
  * > Copyright (c) 2021 Julien Constant
  *
@@ -32,10 +26,53 @@
  * ! SOFTWARE.
  */
 
-#include "./Sources/Scheduler/Scheduler.hpp"
+#ifndef SENSOR_BASE_HPP_
+#define SENSOR_BASE_HPP_
 
-int main(int argc, char const *argv[]) {
-	Scheduler sc; // Start the scheduler
+#include  "../constants.hpp"
 
-	return 0;
-}
+#include <cmath>
+#include <limits>
+
+class SensorBase
+{
+protected:
+  SensorData m_data; // data of the sensor
+
+  /**
+	 * @brief Random number generator between type min & type max
+	 * @tparam T type of the random number
+	 * @return T random number between min & max of the given type
+	 */
+  template <typename T>
+  T aleaGenVal()
+  {
+    T min = std::numeric_limits<T>::min();
+    T max = std::numeric_limits<T>::max();
+    return aleaGenVal<T>(min, max);
+  };
+
+  /**
+	 * @brief Random number generator in [min, max]
+	 * @tparam T type of the random number
+	 */
+  template <typename T>
+  T aleaGenVal(T min, T max)
+  {
+    if (min == max)
+      return min;
+    if (max > RAND_MAX)
+      max = RAND_MAX;
+
+    return min + std::fmod(rand(), max - min);
+  };
+
+public:
+  SensorBase();
+  SensorBase(SensorType sT, DataType dT);
+
+  virtual ~SensorBase(){};
+  virtual const SensorData &getData() = 0; // default value set to 0
+};
+
+#endif // SENSOR_BASE_HPP_

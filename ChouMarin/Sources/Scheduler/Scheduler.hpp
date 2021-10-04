@@ -1,15 +1,9 @@
 /**
- * @file main.cpp
+ * @file Scheduler.hpp
  * @author @Juknum - Julien CONSTANT (julien.constant@utbm.fr)
- * @brief AP4A Project : 
- *  Creation of a submarine IOT environment simulator;
- *  modeling an ecosystem of sensors based on 4 type of sensors inside the submarine:
- *  - temperature,
- *  - light,
- *  - humidity,
- *  - pressure.
+ * @brief Schedule event in the submarine IOT
+ * @date 2021-09-27
  * 
- * @date 2021-09-21
  * @copyright MIT License
  * > Copyright (c) 2021 Julien Constant
  *
@@ -32,10 +26,33 @@
  * ! SOFTWARE.
  */
 
-#include "./Sources/Scheduler/Scheduler.hpp"
+#ifndef SCHEDULER_HPP_
+#define SCHEDULER_HPP_
 
-int main(int argc, char const *argv[]) {
-	Scheduler sc; // Start the scheduler
+#include <vector>
+#include <time.h>
 
-	return 0;
-}
+#include "TimeInterval.hpp"
+#include "../Server/Server.hpp"
+#include "../Sensor/AllSensors/HumiditySensor.hpp"
+#include "../Sensor/AllSensors/LightSensor.hpp"
+#include "../Sensor/AllSensors/TemperatureSensor.hpp"
+#include "../Sensor/AllSensors/PressureSensor.hpp"
+
+class Scheduler
+{
+public:
+	Scheduler();
+	virtual ~Scheduler();
+
+private:
+	Server server;
+	LightSensor lightSensor;
+	HumiditySensor humiditySensor;
+	TemperatureSensor temperatureSensor;
+	PressureSensor pressureSensor;
+	std::vector<SensorBase*> listSensors;
+	std::vector<TimeInterval> timeInterval;
+};
+
+#endif // SCHEDULER_HPP_

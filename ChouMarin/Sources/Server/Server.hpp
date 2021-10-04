@@ -1,15 +1,9 @@
 /**
- * @file main.cpp
+ * @file Server.hpp
  * @author @Juknum - Julien CONSTANT (julien.constant@utbm.fr)
- * @brief AP4A Project : 
- *  Creation of a submarine IOT environment simulator;
- *  modeling an ecosystem of sensors based on 4 type of sensors inside the submarine:
- *  - temperature,
- *  - light,
- *  - humidity,
- *  - pressure.
- * 
+ * @brief used to display AND/OR write sensors data into the console/sensors files (in ./Logs)
  * @date 2021-09-21
+ * 
  * @copyright MIT License
  * > Copyright (c) 2021 Julien Constant
  *
@@ -32,10 +26,32 @@
  * ! SOFTWARE.
  */
 
-#include "./Sources/Scheduler/Scheduler.hpp"
+#ifndef SERVER_HPP_
+#define SERVER_HPP_
 
-int main(int argc, char const *argv[]) {
-	Scheduler sc; // Start the scheduler
+#include "../constants.hpp"
 
-	return 0;
-}
+class Server
+{
+private:
+	bool m_consoleActivated; // if true: console sensor data
+	bool m_logsActivated;		 // if true: log sensor data into files at ./Logs/<sensorName>
+
+	/**
+	 * ! As the subject of this project is always changing the type of the two functions below,
+	 * ! I've taken the liberty to make them private & access them trough receiveData()
+	 * ! This public function decide where the data should go
+	 */
+	void fileWrite(const SensorData& data);
+	void consoleWrite(const SensorData& data);
+
+public:
+	Server();
+	Server(bool, bool);
+	virtual ~Server(){};
+	void receiveData(const SensorData& data);
+};
+
+void operator<<(Server& server, const SensorData& data);
+
+#endif // SERVER_HPP_

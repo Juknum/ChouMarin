@@ -1,15 +1,9 @@
 /**
- * @file main.cpp
+ * @file LightSensor.cpp
  * @author @Juknum - Julien CONSTANT (julien.constant@utbm.fr)
- * @brief AP4A Project : 
- *  Creation of a submarine IOT environment simulator;
- *  modeling an ecosystem of sensors based on 4 type of sensors inside the submarine:
- *  - temperature,
- *  - light,
- *  - humidity,
- *  - pressure.
+ * @brief Light sensor
+ * @date 2021-09-27
  * 
- * @date 2021-09-21
  * @copyright MIT License
  * > Copyright (c) 2021 Julien Constant
  *
@@ -32,10 +26,26 @@
  * ! SOFTWARE.
  */
 
-#include "./Sources/Scheduler/Scheduler.hpp"
+#include "LightSensor.hpp"
 
-int main(int argc, char const *argv[]) {
-	Scheduler sc; // Start the scheduler
+/**
+ * @brief Construct a new Light Sensor:: Light Sensor object
+ */
+LightSensor::LightSensor() : Sensor<bool>(e_light, e_bool){};
 
-	return 0;
-}
+/**
+ * @brief Destroy the Light Sensor:: Light Sensor object
+ */
+LightSensor::~LightSensor(){};
+
+/**
+ * @brief get boolean value of the light sensor (true = light on | false = light off)
+ * @return const SensorData& 
+ */
+const SensorData& LightSensor::getData()
+{
+	this->m_value = this->aleaGenVal<int>() % 2;
+	this->m_data.value = (this->m_value < 1) ? "false" : "true";
+
+	return this->m_data;
+};

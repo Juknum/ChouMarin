@@ -1,15 +1,9 @@
 /**
- * @file main.cpp
+ * @file Scheduler.cpp
  * @author @Juknum - Julien CONSTANT (julien.constant@utbm.fr)
- * @brief AP4A Project : 
- *  Creation of a submarine IOT environment simulator;
- *  modeling an ecosystem of sensors based on 4 type of sensors inside the submarine:
- *  - temperature,
- *  - light,
- *  - humidity,
- *  - pressure.
+ * @brief Schedule event of the submarine IOT
+ * @date 2021-09-27
  * 
- * @date 2021-09-21
  * @copyright MIT License
  * > Copyright (c) 2021 Julien Constant
  *
@@ -32,10 +26,47 @@
  * ! SOFTWARE.
  */
 
-#include "./Sources/Scheduler/Scheduler.hpp"
+#include "Scheduler.hpp"
 
-int main(int argc, char const *argv[]) {
-	Scheduler sc; // Start the scheduler
+/**
+ * @brief Construct a new Scheduler:: Scheduler object
+ */
+Scheduler::Scheduler()
+{
+	// add sensors to the list of sensors
+	listSensors.push_back(&this->humiditySensor);
+	listSensors.push_back(&this->lightSensor);
+	listSensors.push_back(&this->temperatureSensor);
+	listSensors.push_back(&this->pressureSensor);
 
-	return 0;
-}
+	// add time interval check for sensors
+	timeInterval.push_back(TimeInterval(e_humidity, 1000));
+	timeInterval.push_back(TimeInterval(e_light, 1000));
+	timeInterval.push_back(TimeInterval(e_temperature, 1000));
+	timeInterval.push_back(TimeInterval(e_pressure, 1000));
+
+	// watching
+	while (true)
+	{
+		for (int i = 0; i < (int)this->timeInterval.size(); ++i)
+		{
+			if (timeInterval[i].checkTime())
+			{
+				for (int j = 0; j < (int)listSensors.size(); j++)
+				{
+					const SensorData& data = listSensors[j]->getData();
+
+					if (data.sensorType == timeInterval[i].m_sensorType)
+					{
+						server << listSensors[j]->getData();
+					}
+				}
+			}
+		}
+	}
+};
+
+/**
+ * @brief Destroy the Scheduler:: Scheduler object
+ */
+Scheduler::~Scheduler() {}

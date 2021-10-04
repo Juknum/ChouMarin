@@ -1,17 +1,35 @@
 /**
- * @author @Juknum (Julien CONSTANT)
  * @file Server.cpp
- * @date 21/09/2021
- * @brief Server class main file, used to display &/OR write sensors data into the console &/OR sensors files
+ * @author @Juknum - Julien CONSTANT (julien.constant@utbm.fr)
+ * @brief used to display AND/OR write sensors data into the console/sensors files (in ./Logs)
+ * @date 2021-09-21
+ * 
+ * @copyright MIT License
+ * > Copyright (c) 2021 Julien Constant
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ * 
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ * 
+ * ! THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * ! IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * ! FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * ! AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * ! LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * ! OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * ! SOFTWARE.
  */
 
-#include <iostream>
-#include <ctime>
-#include <string.h>
-#include <fstream>
+#include "Server.hpp"
 
-#include "../Includes/Server.hpp"
-#include "../Includes/constants.hpp"
+#include <ctime>
+#include <fstream>
 
 /**
  * @brief Construct a new Server:: Server object
@@ -84,7 +102,7 @@ void Server::fileWrite(const SensorData& data)
 
 	std::ofstream logInfo(buffer, std::ios::app);
 
-	logInfo << date << " | SENSOR VALUE: " << data.value << std::endl;
+	logInfo << date << " | " << data.value << std::endl;
 
 	logInfo.close();
 };
