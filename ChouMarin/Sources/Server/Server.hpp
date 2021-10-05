@@ -38,9 +38,8 @@ private:
 	bool m_logsActivated;		 // if true: log sensor data into files at ./Logs/<sensorName>
 
 	/**
-	 * ! As the subject of this project is always changing the type of the two functions below,
-	 * ! I've taken the liberty to make them private & access them trough receiveData()
-	 * ! This public function decide where the data should go
+	 * ! As the subject is rather free on the properties of this 2 functions below,
+	 * ! I've choosen to make them private & access them trough receiveData()
 	 */
 	void fileWrite(const SensorData& data);
 	void consoleWrite(const SensorData& data);
