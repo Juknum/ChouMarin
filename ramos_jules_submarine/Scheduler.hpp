@@ -10,11 +10,23 @@
 #ifndef SCHEDULER_HPP_
 #define SCHEDULER_HPP_
 
+#include <iostream>
+#include <csignal>
+
+//TODO: make these work
 #include <chrono>
 #include <thread>
+
+#ifdef _WIN32
+#include <windows.h>
+#else
+#include <unistd.h>
+#define Sleep(x) usleep((x)*1000)
+#endif
 /*
- * making the assumption this code will be compiled and run with at least C++1 to get a
- * crossplatform and included in the c++ standards waiting solution
+ * making a macro because I couldn't get threads to work, this is my best shot at a cross platform solution
+ * for the waiting times
+ * I programmed on Windows
  */
 
 #include "Server.hpp"

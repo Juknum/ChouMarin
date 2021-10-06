@@ -50,11 +50,51 @@ void Scheduler::Launch()
   //for the first version of this program, all sensors have the same time interval of 2s; to be reworked for the final version
 
   //std::this_thread::sleep_for(std::chrono::milliseconds(2000));
-  //TODO: make the wait work and put everything in a while (true) loop
+  //TODO: make the threads work to use this line instead of the macro
 
-  this->SendToServer(m_server, m_light);
-  this->SendToServer(m_server, m_temperature);
-  this->SendToServer(m_server, m_humidity);
-  this->SendToServer(m_server, m_sound);
-  this->SendToServer(m_server, m_pression);
+  while(true)
+  {
+    this->SendToServer(m_server, m_light);
+    this->SendToServer(m_server, m_temperature);
+    this->SendToServer(m_server, m_humidity);
+    this->SendToServer(m_server, m_sound);
+    this->SendToServer(m_server, m_pression);
+
+    Sleep(2000);
+  }
+
 }
+
+//researched solutions for breaking the loop with an input:
+
+//std::cin>>stopCheck; useless because it stops the loop
+
+/*if (std::cin.get() == 'q')
+      break; */
+//same issue
+
+//signals aren't working either, restricts to 1 instance of scheduler and couldn't get them to work
+//other option: signal in main, instantly triggered so failed
+//in Scheduler but with a global bool variable: fail again, ctrl+c failed too
+
+/*
+ * signal(SIGINT, signalHandler);
+ * void signalHandler( int signum ) {
+   std::cout << "Interrupt signal (" << signum << ") received.\n";
+
+   loopCheck = false;
+
+   exit(signum);
+}
+ * created a loopCheck.hpp file with a static bool loopCheck variable
+ */
+
+
+//TODO: when thread works, infinite loop breaking: see https://stackoverflow.com/questions/19966923/breaking-out-of-an-infinite-loop
+/*
+ * void user_input(){
+    if(std::cin.get()=='n'){
+        break_condition = true;
+    }
+}
+ */

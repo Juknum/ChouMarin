@@ -26,7 +26,7 @@ void Temperature::operator=(const Temperature& temperature_p)
 
 float Temperature::aleaGenVal()
 {
-  return (rand()%110+150)/10; //from 15.0 to 25.9, will stay a float
+  return (rand()%110+150)/10.0; //from 15.0 to 25.9, will stay a float
 }
 
 float Temperature::getData()

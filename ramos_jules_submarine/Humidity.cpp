@@ -26,7 +26,7 @@ void Humidity::operator=(const Humidity& humidity_p)
 
 float Humidity::aleaGenVal()
 {
-  return (rand()%351+400)/10; //from 40.0 to 75.0, will stay a float
+  return (rand()%351+400)/10.0; //from 40.0 to 75.0, will stay a float
 }
 
 float Humidity::getData()
