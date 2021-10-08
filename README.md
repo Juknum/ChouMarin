@@ -10,3 +10,15 @@
     - [Fichiers sources & headers (`.cpp` & `.hpp`): `Sources/*`](https://github.com/Aldarme/TPAP4A/tree/Constant_Julien_TPMM/ChouMarin/Sources)
     - [Fichiers logs (`.log`): `Logs/*`](https://github.com/Aldarme/TPAP4A/tree/Constant_Julien_TPMM/ChouMarin/Logs)
     - Fichiers de compilation: `Debug/*`
+
+- Compiler le projet:  
+
+  ```bash
+  cd ./ChouMarin/Debug; make all
+  ```
+
+- Lancer le projet:  
+
+  ```bash
+  ./ChouMarin/Debug/ChouMarin.exe
+  ```

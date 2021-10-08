@@ -95,7 +95,7 @@ typedef struct s_SensorData
 	DataType dataType;
 	std::string value;
 	std::string time;
-	unsigned int id;
+	short unsigned int id;
 } SensorData;
 
 #endif // CONSTANTS_HPP_

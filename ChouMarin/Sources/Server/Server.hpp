@@ -30,12 +30,23 @@
 #define SERVER_HPP_
 
 #include "../constants.hpp"
-
+#include <vector>
 class Server
 {
 private:
 	bool m_consoleActivated; // if true: console sensor data
 	bool m_logsActivated;		 // if true: log sensor data into files at ./Logs/<sensorName>
+
+	const unsigned int m_consoleHeaderLength = 6;
+	std::vector <std::string> m_consoleContent // content displayed inside the console
+	{
+		"",
+		"                                 |_",
+		"  > SUBMARINE IOT          _____|~ |____",
+		"   - Julien CONSTANT      (  --         ~~~~--_,",
+		"                            ~~~~~~~~~~~~~~~~~~~'`",
+		"SENSORS:" // sensors values are displayed below
+	};
 
 	/**
 	 * ! As the subject is rather free on the properties of this 2 functions below,

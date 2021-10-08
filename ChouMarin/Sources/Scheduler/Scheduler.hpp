@@ -47,10 +47,10 @@ public:
 
 private:
 	Server server;
-	LightSensor lightSensor = LightSensor(0);
+	LightSensor lightSensor = LightSensor(3);
 	HumiditySensor humiditySensor = HumiditySensor(1);
 	TemperatureSensor temperatureSensor = TemperatureSensor(2);
-	PressureSensor pressureSensor = PressureSensor(3);
+	PressureSensor pressureSensor = PressureSensor(0);
 	std::vector<SensorBase*> listSensors;
 	std::vector<TimeInterval> timeInterval;
 };

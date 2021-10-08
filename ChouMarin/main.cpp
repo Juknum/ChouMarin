@@ -9,6 +9,8 @@
  *  - humidity,
  *  - pressure.
  * 
+ * @brief It is better to use OS console instead of the Eclipse console as some features does not works in Eclipse console
+ * 
  * @date 2021-09-21
  * @copyright MIT License
  * > Copyright (c) 2021 Julien Constant

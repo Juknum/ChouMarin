@@ -31,7 +31,7 @@
 /**
  * @brief Construct a new Light Sensor:: Light Sensor object
  */
-LightSensor::LightSensor(unsigned int id) : Sensor<bool>(e_light, e_bool, id){};
+LightSensor::LightSensor(short unsigned int id) : Sensor<bool>(e_light, e_bool, id){};
 
 /**
  * @brief Destroy the Light Sensor:: Light Sensor object

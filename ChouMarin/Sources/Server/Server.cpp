@@ -42,42 +42,38 @@ Server::Server() : m_consoleActivated(true), m_logsActivated(true) {}
 Server::Server(bool consoleOn, bool logsOn) : m_consoleActivated(consoleOn), m_logsActivated(logsOn) {}
 
 /**
- * @brief Write data.value into the console
+ * @brief Write data into the console
  * @param data sensor data
  */
 void Server::consoleWrite(const SensorData& data)
 {
-	switch (data.dataType)
-	{
-		case e_float:
-		{
-			float f = stof(data.value);
-			std::cout << data.id << " :: " << data.time << " | " << SensorTypeStrings[data.sensorType] << ": " << f << std::endl;
-			break;
-		}
-		case e_int:
-		{
-			int i = stoi(data.value);
-			std::cout << data.id << " :: " << data.time << " | " << SensorTypeStrings[data.sensorType] << ": " << i << std::endl;
-			break;
-		}
-		case e_bool:
-		{
-			std::string b = (data.value == "true") ? "true" : "false";
-			std::cout << data.id << " :: " << data.time << " | " << SensorTypeStrings[data.sensorType] << ": " << b << std::endl;
-			break;
-		}
-		case e_unknown_data:
-		{
-			std::cout << data.id << " :: " << data.time << " | " << SensorTypeStrings[data.sensorType] << ": " << data.value << std::endl;
-			break;
-		}
-		default:
-		{
-			break;
-		}
+	// clear the console
+	// ! This doesn't work in Eclipse IDE console
+#if defined _WIN32
+	system("cls");
+#elif defined(__LINUX__) || defined(__gnu_linux__) || defined(__linux__)
+	system("clear");
+	//std::cout<< u8"\033[2J\033[1;1H"; //Using ANSI Escape Sequences
+#elif defined(__APPLE__)
+	system("clear");
+#endif
 
-		// this->m_consoleText += data.time + " | " + SensorTypeStrings[data.sensorType] + ": " + data.value;
+	// add data if data ID line is not present
+	if (this->m_consoleContent.size() < (unsigned int)(this->m_consoleHeaderLength + 1 + data.id))
+	{
+		for (unsigned int j = 0; j < this->m_consoleContent.size() - (unsigned int)(this->m_consoleHeaderLength + 1 + data.id); j++)
+		{
+			this->m_consoleContent.push_back("[" + std::to_string(j) + "] :: waiting for collection...");
+		}
+	}
+
+	// adjust data
+	this->m_consoleContent[this->m_consoleHeaderLength + data.id] = "[" + std::to_string(data.id) + "] :: " + data.time + " | " + SensorTypeStrings[data.sensorType] + " : " + data.value;
+
+	// write data inside the console
+	for (unsigned int i = 0; i < this->m_consoleContent.size(); i++)
+	{
+		std::cout << this->m_consoleContent[i] << std::endl;
 	}
 };
 
@@ -93,7 +89,7 @@ void Server::fileWrite(const SensorData& data)
 
 	std::ofstream logInfo(buffer, std::ios::app);
 
-	logInfo << data.time << " | " << data.value << std::endl;
+	logInfo << "[" << data.id << "] :: " << data.time << " | " << data.value << std::endl;
 
 	logInfo.close();
 };

@@ -31,7 +31,7 @@
 /**
  * @brief Construct a new Pressure Sensor:: Pressure Sensor object
  */
-PressureSensor::PressureSensor(unsigned int id) : Sensor<int>(e_pressure, e_int, id){};
+PressureSensor::PressureSensor(short unsigned int id) : Sensor<int>(e_pressure, e_int, id){};
 
 /**
  * @brief Destroy the Pressure Sensor:: Pressure Sensor object

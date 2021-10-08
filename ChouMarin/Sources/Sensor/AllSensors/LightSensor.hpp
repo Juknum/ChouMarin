@@ -33,7 +33,7 @@
 class LightSensor : public Sensor<bool>
 {
 public:
-	LightSensor(unsigned int id);
+	LightSensor(short unsigned int id);
 	virtual ~LightSensor();
 	const SensorData& getData();
 };

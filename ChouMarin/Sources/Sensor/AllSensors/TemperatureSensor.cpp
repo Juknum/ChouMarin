@@ -31,7 +31,7 @@
 /**
  * @brief Construct a new Humidity Sensor:: Humidity Sensor object
  */
-TemperatureSensor::TemperatureSensor(unsigned int id) : Sensor<float>(e_temperature, e_float, id){};
+TemperatureSensor::TemperatureSensor(short unsigned int id) : Sensor<float>(e_temperature, e_float, id){};
 
 /**
  * @brief Destroy the Humidity Sensor:: Humidity Sensor object
