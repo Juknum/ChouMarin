@@ -42,9 +42,10 @@ SensorBase::SensorBase()
  * @param sT sensor type 
  * @param dT sensor data type
  */
-SensorBase::SensorBase(SensorType sT, DataType dT)
+SensorBase::SensorBase(SensorType sT, DataType dT, unsigned int id)
 {
   this->m_data.sensorType = sT;
   this->m_data.dataType = dT;
   this->m_data.value = "";
+  this->m_data.id = id;
 };

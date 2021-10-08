@@ -41,7 +41,7 @@ protected:
 
 public:
 	Sensor<T>();
-	Sensor<T>(SensorType sT, DataType dT) : SensorBase(sT, dT), m_value(){};
+	Sensor<T>(SensorType sT, DataType dT, unsigned int id) : SensorBase(sT, dT, id), m_value() {};
 
 	virtual ~Sensor(){};
 	virtual const SensorData& getData() = 0;

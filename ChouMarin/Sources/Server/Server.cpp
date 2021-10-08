@@ -52,30 +52,32 @@ void Server::consoleWrite(const SensorData& data)
 		case e_float:
 		{
 			float f = stof(data.value);
-			std::cout << data.time << " | " << SensorTypeStrings[data.sensorType] << ": " << f << std::endl;
+			std::cout << data.id << " :: " << data.time << " | " << SensorTypeStrings[data.sensorType] << ": " << f << std::endl;
 			break;
 		}
 		case e_int:
 		{
 			int i = stoi(data.value);
-			std::cout << data.time << " | " << SensorTypeStrings[data.sensorType] << ": " << i << std::endl;
+			std::cout << data.id << " :: " << data.time << " | " << SensorTypeStrings[data.sensorType] << ": " << i << std::endl;
 			break;
 		}
 		case e_bool:
 		{
 			std::string b = (data.value == "true") ? "true" : "false";
-			std::cout << data.time << " | " << SensorTypeStrings[data.sensorType] << ": " << b << std::endl;
+			std::cout << data.id << " :: " << data.time << " | " << SensorTypeStrings[data.sensorType] << ": " << b << std::endl;
 			break;
 		}
 		case e_unknown_data:
 		{
-			std::cout << data.time << " | " << SensorTypeStrings[data.sensorType] << ": " << data.value << std::endl;
+			std::cout << data.id << " :: " << data.time << " | " << SensorTypeStrings[data.sensorType] << ": " << data.value << std::endl;
 			break;
 		}
 		default:
 		{
 			break;
 		}
+
+		// this->m_consoleText += data.time + " | " + SensorTypeStrings[data.sensorType] + ": " + data.value;
 	}
 };
 

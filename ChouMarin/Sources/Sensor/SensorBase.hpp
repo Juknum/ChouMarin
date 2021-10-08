@@ -69,7 +69,7 @@ protected:
 
 public:
   SensorBase();
-  SensorBase(SensorType sT, DataType dT);
+  SensorBase(SensorType sT, DataType dT, unsigned int id);
 
   virtual ~SensorBase(){};
   virtual const SensorData &getData() = 0; // default value set to 0

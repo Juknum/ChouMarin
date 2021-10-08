@@ -34,7 +34,7 @@
 class TemperatureSensor : public Sensor<float>
 {
 public:
-	TemperatureSensor();
+	TemperatureSensor(unsigned int id);
 	virtual ~TemperatureSensor();
 	const SensorData& getData();
 };

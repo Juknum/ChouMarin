@@ -34,7 +34,7 @@
 class PressureSensor : public Sensor<int>
 {
 public:
-	PressureSensor();
+	PressureSensor(unsigned int id);
 	virtual ~PressureSensor();
 	const SensorData& getData();
 };
