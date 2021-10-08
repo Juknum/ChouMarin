@@ -9,7 +9,7 @@
 
 Temperature::Temperature()
 {
-  this->m_sensorType="temperature";
+  this->m_sensorType=EType::e_temperature;
 };
 
 Temperature::Temperature(const Temperature& temperature_p)

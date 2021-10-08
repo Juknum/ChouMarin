@@ -9,7 +9,7 @@
 
 Humidity::Humidity()
 {
-  this->m_sensorType = "humidity";
+  this->m_sensorType = EType::e_humidity;
 };
 
 Humidity::Humidity(const Humidity& humidity_p)

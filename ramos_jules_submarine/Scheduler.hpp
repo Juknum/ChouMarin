@@ -71,12 +71,12 @@ public:
 
 private:
 
-  Server m_server;
-  Light m_light;
-  Temperature m_temperature;
-  Humidity m_humidity;
-  Sound m_sound;
-  Pression m_pression;
+  Server m_server; ///< stocks the associated server
+  Light m_light; //< stocks the submarine's light sensor
+  Temperature m_temperature; ///< stocks the temperature sensor
+  Humidity m_humidity; ///< stocks the humidity sensor
+  Sound m_sound; ///< stocks the sound sensor
+  Pression m_pression; ///< stocks the pressure sensor
 };
 
 #endif /* SCHEDULER_HPP_ */

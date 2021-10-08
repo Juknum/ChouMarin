@@ -13,12 +13,13 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include "enums.hpp"
 
 class Server
 {
 public:
 
-  //canonical form
+  //canonical form was left in the header as it is pretty short
   Server():m_consolActivation(true),m_logActivation(true){};
   Server(const Server& server_p):m_consolActivation(server_p.m_consolActivation),m_logActivation(server_p.m_logActivation){};
   virtual ~Server(){};
@@ -38,36 +39,43 @@ public:
   /**
    * @brief takes the incomming data and displays/logs it
    * @return void
-   * @param incomming data: float and the sensor type: string
+   * @param incomming data: float and the sensor type: EType
    */
-  void dataRcv(float data_p,std::string sensor_p);
+  void dataRcv(float data_p,EType sensor_p);
 
 private:
 
   /**
    * @brief automates the unit output for each sensor, basically a text formatting method
    * @return string: relevant unit
-   * @param string: sensor's type
+   * @param EType: sensor's type
    */
-  std::string unitSelection(std::string sensor_p);
+  std::string unitSelection(EType sensor_p);
+
+  /**
+   * @brief automates the EType to string conversion, similar to unitSelection
+   * @return string: relevant string
+   * @param EType: sensor's type
+   */
+  std::string typeToString(EType sensor_p);
 
   /**
    * @brief writes the data of each sensor in its designed log file
    * @return nothing
-   * @param incoming data, of float type for now, string: sensor type to select the log file and unit
+   * @param incoming data, of float type for now, EType: sensor type to select the log file name and unit
    */
-  void fileWrite(float data_p,std::string sensor_p);
+  void fileWrite(float data_p,EType sensor_p);
 
   /**
    * @brief displays the incoming data in the console
    * @return nothing
-   * @param incoming data, of float type for now; string: sensor type to select the unit
+   * @param incoming data, of float type for now; EType: sensor type to select the unit
    */
-  void consolWrite(float data_p,std::string sensor_p);
+  void consolWrite(float data_p,EType sensor_p);
 
-  bool m_consolActivation; //enables or disables the console writing
+  bool m_consolActivation; ///< enables or disables the console writing
 
-  bool m_logActivation; //enables or disables the log file writing
+  bool m_logActivation; ///< enables or disables the log file writing
 
 };
 

@@ -9,7 +9,7 @@
 
 Sound::Sound()
 {
-  this->m_sensorType="sound";
+  this->m_sensorType=EType::e_sound;
 };
 
 Sound::Sound(const Sound& sound_p)

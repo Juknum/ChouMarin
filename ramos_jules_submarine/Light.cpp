@@ -9,7 +9,7 @@
 
 Light::Light()
 {
-  this->m_sensorType="light";
+  this->m_sensorType=EType::e_light;
 };
 
 Light::Light(const Light& light_p)

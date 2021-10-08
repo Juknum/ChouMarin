@@ -7,7 +7,7 @@
 
 #include "Server.hpp"
 
-void Server::dataRcv(float data_p,std::string sensor_p)
+void Server::dataRcv(float data_p,EType sensor_p)
 {
   if (this->m_consolActivation==true)
   {
@@ -19,39 +19,87 @@ void Server::dataRcv(float data_p,std::string sensor_p)
   }
 }
 
-std::string Server::unitSelection(std::string sensor_p)
-{ // can't use a switch, might have to be reworked later on
-  if (sensor_p=="humidity")
+std::string Server::unitSelection(EType sensor_p)
+{
+  switch (sensor_p)
   {
-    return "% in the air";
-  }
+    case EType::e_humidity :
+    {
+      return "% in the air";
+    }
+    break;
 
-  if (sensor_p=="temperature")
-  {
-    return "°C";
-  }
+    case EType::e_pression :
+    {
+      return "hPa";
+    }
+    break;
 
-  if (sensor_p=="pression")
-  {
-    return "hPa";
-  }
+    case EType::e_temperature :
+    {
+      return "°C";
+    }
+    break;
 
-  if (sensor_p=="sound")
-  {
-    return "dB";
-  }
+    case EType::e_sound :
+    {
+      return "dB";
+    }
+    break;
 
-  return " "; //case of light
+    default :
+    {
+      return " ";
+    }
+    break;
+  }
 }
 
-void Server::fileWrite(float data_p,std::string sensor_p)
+std::string Server::typeToString(EType sensor_p)
 {
-  std::string fileName = "../" + sensor_p + ".txt"; //for clarity, log files are created outside of the source code folder
+  switch (sensor_p)
+  {
+    case EType::e_humidity :
+    {
+      return "humidity";
+    }
+    break;
+
+    case EType::e_pression :
+    {
+      return "pression";
+    }
+    break;
+
+    case EType::e_temperature :
+    {
+      return "temperature";
+    }
+    break;
+
+    case EType::e_sound :
+    {
+      return "sound";
+    }
+    break;
+
+    default :
+    {
+      return "light";
+    }
+    break;
+  }
+}
+
+
+void Server::fileWrite(float data_p,EType sensor_p)
+{
+  std::string fileName = "../" + this->typeToString(sensor_p) + ".txt"; //for clarity, log files are created outside of the source code folder
 
   std::ofstream file(fileName,std::ios::app);
   if(!file.is_open())
   {
-    std::cout<<sensor_p<<" log file couldn't be opened"<<std::endl;
+    std::cout<<this->typeToString(sensor_p)<<" log file couldn't be opened"<<std::endl;
   }
   else
   {
@@ -60,7 +108,7 @@ void Server::fileWrite(float data_p,std::string sensor_p)
   file.close();
 }
 
-void Server::consolWrite(float data_p,std::string sensor_p)
+void Server::consolWrite(float data_p,EType sensor_p)
 {
   std::cout<<data_p<<this->unitSelection(sensor_p)<<std::endl;
 }

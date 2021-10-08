@@ -10,7 +10,7 @@
 
 Pression::Pression()
 {
-  this->m_sensorType="pression";
+  this->m_sensorType=EType::e_pression;
 };
 
 Pression::Pression(const Pression& pression_p)

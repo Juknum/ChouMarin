@@ -13,6 +13,7 @@
 #include <cstdlib>
 #include <string>
 #include <ctime>
+#include "enums.hpp"
 
 class Sensor
 {
@@ -23,10 +24,10 @@ public:
 
   /**
    * @brief getter for the m_sensorType attribute
-   * @return string: m_sensorType
+   * @return EType: m_sensorType
    * @param none
    */
-  std::string getSensorType();
+  EType getSensorType();
 
 protected:
 
@@ -37,7 +38,7 @@ protected:
    */
   virtual float aleaGenVal()=0;
 
-  std::string m_sensorType; //stocks the kind of sensor initialized for an easier log file finding
+  EType m_sensorType; ///< stocks the kind of sensor initialized for an easier log file finding
 
 private:
 

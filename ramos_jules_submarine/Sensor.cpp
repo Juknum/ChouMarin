@@ -7,7 +7,7 @@
 
 #include "Sensor.hpp"
 
-std::string Sensor::getSensorType()
+EType Sensor::getSensorType()
 {
   return this->m_sensorType;
 }
