@@ -44,6 +44,11 @@ HumiditySensor::~HumiditySensor(){};
  */
 const SensorData& HumiditySensor::getData()
 {
+	time_t t = time(0);
+	std::string date = ctime(&t);
+	date.erase(24, 25); // remove the '\n' at the end
+	this->m_data.time = date;
+
 	this->m_value = this->aleaGenVal<float>(10.01, 10.73);
 	this->m_data.value = std::to_string(this->m_value);
 

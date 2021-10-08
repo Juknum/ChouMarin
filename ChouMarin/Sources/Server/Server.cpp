@@ -27,8 +27,6 @@
  */
 
 #include "Server.hpp"
-
-#include <ctime>
 #include <fstream>
 
 /**
@@ -49,34 +47,29 @@ Server::Server(bool consoleOn, bool logsOn) : m_consoleActivated(consoleOn), m_l
  */
 void Server::consoleWrite(const SensorData& data)
 {
-
-	time_t t = time(0);
-	std::string date = ctime(&t);
-	date.erase(24, 25); // remove the '\n' at the end
-
 	switch (data.dataType)
 	{
 		case e_float:
 		{
 			float f = stof(data.value);
-			std::cout << date << " | " << SensorTypeStrings[data.sensorType] << ": " << f << std::endl;
+			std::cout << data.time << " | " << SensorTypeStrings[data.sensorType] << ": " << f << std::endl;
 			break;
 		}
 		case e_int:
 		{
 			int i = stoi(data.value);
-			std::cout << date << " | " << SensorTypeStrings[data.sensorType] << ": " << i << std::endl;
+			std::cout << data.time << " | " << SensorTypeStrings[data.sensorType] << ": " << i << std::endl;
 			break;
 		}
 		case e_bool:
 		{
 			std::string b = (data.value == "true") ? "true" : "false";
-			std::cout << date << " | " << SensorTypeStrings[data.sensorType] << ": " << b << std::endl;
+			std::cout << data.time << " | " << SensorTypeStrings[data.sensorType] << ": " << b << std::endl;
 			break;
 		}
 		case e_unknown_data:
 		{
-			std::cout << date << " | " << SensorTypeStrings[data.sensorType] << ": " << data.value << std::endl;
+			std::cout << data.time << " | " << SensorTypeStrings[data.sensorType] << ": " << data.value << std::endl;
 			break;
 		}
 		default:
@@ -96,13 +89,9 @@ void Server::fileWrite(const SensorData& data)
 	buffer.append(SensorTypeFileNames[data.sensorType]);
 	buffer.append(".log");
 
-	time_t t = time(0);
-	std::string date = ctime(&t);
-	date.erase(24, 25); // remove the '\n' at the end
-
 	std::ofstream logInfo(buffer, std::ios::app);
 
-	logInfo << date << " | " << data.value << std::endl;
+	logInfo << data.time << " | " << data.value << std::endl;
 
 	logInfo.close();
 };

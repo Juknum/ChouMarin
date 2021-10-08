@@ -40,10 +40,10 @@ Scheduler::Scheduler()
 	listSensors.push_back(&this->pressureSensor);
 
 	// add time interval check for sensors
-	timeInterval.push_back(TimeInterval(e_humidity, 1000));
-	timeInterval.push_back(TimeInterval(e_light, 1000));
-	timeInterval.push_back(TimeInterval(e_temperature, 1000));
-	timeInterval.push_back(TimeInterval(e_pressure, 1000));
+	timeInterval.push_back(TimeInterval(e_humidity, 3000));
+	timeInterval.push_back(TimeInterval(e_light, 5000));
+	timeInterval.push_back(TimeInterval(e_temperature, 2000));
+	timeInterval.push_back(TimeInterval(e_pressure, 10000));
 
 	// watching
 	while (true)

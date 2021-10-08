@@ -44,8 +44,13 @@ LightSensor::~LightSensor(){};
  */
 const SensorData& LightSensor::getData()
 {
+	time_t t = time(0);
+	std::string date = ctime(&t);
+	date.erase(24, 25); // remove the '\n' at the end
+	this->m_data.time = date;
+
 	this->m_value = this->aleaGenVal<int>() % 2;
 	this->m_data.value = (this->m_value < 1) ? "false" : "true";
-
+	
 	return this->m_data;
 };

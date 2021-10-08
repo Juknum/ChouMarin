@@ -32,6 +32,7 @@
 // libs below are declared to be easily used everywhere in the project
 #include <string>
 #include <iostream>
+#include <ctime>
 
 /**
  * @brief types for data value of a sensor
@@ -93,6 +94,7 @@ typedef struct s_SensorData
 	SensorType sensorType;
 	DataType dataType;
 	std::string value;
+	std::string time;
 } SensorData;
 
 #endif // CONSTANTS_HPP_

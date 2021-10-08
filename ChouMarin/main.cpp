@@ -34,7 +34,8 @@
 
 #include "./Sources/Scheduler/Scheduler.hpp"
 
-int main(int argc, char const *argv[]) {
+int main(int argc, char const* argv[])
+{
 	Scheduler sc; // Start the scheduler
 
 	return 0;
