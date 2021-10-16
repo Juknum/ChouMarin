@@ -38,7 +38,10 @@
 
 int main(int argc, char const* argv[])
 {
-	Scheduler sc; // Start the scheduler
+	Server server(true, true); // Set console & logs to true : active them
+	Scheduler scheduler(server); // Start the scheduler with the server
+
+	scheduler.start(); // starts the scheduler
 
 	return 0;
-}
+};

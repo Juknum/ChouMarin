@@ -31,19 +31,14 @@
 /**
  * @brief Construct a new Time Interval:: Time Interval object with default values
  */
-TimeInterval::TimeInterval() : m_sensorType(e_unknown_type), m_clock(), m_duration(1000){};
+TimeInterval::TimeInterval() : m_sensorType(e_unknown_type), m_clock(), m_duration(1000) {};
 
 /**
  * @brief Construct a new Time Interval:: Time Interval object with given values
  * @param sT SensorType 
  * @param ms Duration between checks
  */
-TimeInterval::TimeInterval(SensorType sT, int ms) : m_sensorType(sT), m_clock(), m_duration(ms){};
-
-/**
- * @brief Destroy the Time Interval:: Time Interval object
- */
-TimeInterval::~TimeInterval(){};
+TimeInterval::TimeInterval(SensorType sT, int ms) : m_sensorType(sT), m_clock(), m_duration(ms) {};
 
 /**
  * @brief check if the actual time is the time where we need to check the sensor (oof)

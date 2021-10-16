@@ -35,7 +35,8 @@ class HumiditySensor : public Sensor<float>
 {
 public:
 	HumiditySensor(short unsigned int id);
-	virtual ~HumiditySensor();
+	virtual ~HumiditySensor() {};
+
 	const SensorData& getData();
 };
 

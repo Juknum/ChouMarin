@@ -41,18 +41,22 @@
 
 class Scheduler
 {
-public:
-	Scheduler();
-	virtual ~Scheduler();
-
 private:
 	Server server;
+	std::vector<SensorBase*> listSensors;
+	std::vector<TimeInterval> timeInterval;
+
 	LightSensor lightSensor = LightSensor(3);
 	HumiditySensor humiditySensor = HumiditySensor(1);
 	TemperatureSensor temperatureSensor = TemperatureSensor(2);
 	PressureSensor pressureSensor = PressureSensor(0);
-	std::vector<SensorBase*> listSensors;
-	std::vector<TimeInterval> timeInterval;
+
+public:
+	Scheduler() {};
+	Scheduler(Server server);
+	virtual ~Scheduler() {};
+
+	void start();
 };
 
 #endif // SCHEDULER_HPP_

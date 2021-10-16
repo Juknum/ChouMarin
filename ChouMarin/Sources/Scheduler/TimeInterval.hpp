@@ -34,16 +34,17 @@
 
 class TimeInterval
 {
-  friend class Scheduler; // to easily access this class from the scheduler
+friend class Scheduler; // to easily access this class from the scheduler
 
 private:
   SensorType m_sensorType;
   clock_t m_clock;
   int m_duration; // duration in ms
+
 public:
   TimeInterval();
   TimeInterval(SensorType sensorType, int duration);
-  virtual ~TimeInterval();
+  virtual ~TimeInterval() {};
   bool checkTime();
 };
 

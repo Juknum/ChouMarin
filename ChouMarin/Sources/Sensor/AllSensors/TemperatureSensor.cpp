@@ -34,11 +34,6 @@
 TemperatureSensor::TemperatureSensor(short unsigned int id) : Sensor<float>(e_temperature, e_float, id){};
 
 /**
- * @brief Destroy the Humidity Sensor:: Humidity Sensor object
- */
-TemperatureSensor::~TemperatureSensor(){};
-
-/**
  * @brief get float value of ambient temperature of the submarine (~21.25 C°)
  * @return const SensorData& 
  */
@@ -53,4 +48,4 @@ const SensorData& TemperatureSensor::getData()
 	this->m_data.value = std::to_string(this->m_value);
 
 	return this->m_data;
-}
+};

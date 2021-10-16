@@ -29,4 +29,4 @@
 #include "Sensor.hpp"
 
 template <class T>
-Sensor<T>::Sensor() : T(){};
+Sensor<T>::Sensor() : T() {};

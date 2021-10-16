@@ -38,7 +38,7 @@ private:
 	bool m_logsActivated;		 // if true: log sensor data into files at ./Logs/<sensorName>
 
 	const unsigned int m_consoleHeaderLength = 6;
-	std::vector <std::string> m_consoleContent // content displayed inside the console
+	std::vector <std::string> m_consoleContent // content displayed on the console
 	{
 		"",
 		"                                 |_",
@@ -57,11 +57,15 @@ private:
 
 public:
 	Server();
-	Server(bool, bool);
-	virtual ~Server(){};
+	Server(bool consoleOn, bool logsOn);
+	virtual ~Server() {};
+
 	void receiveData(const SensorData& data);
+
+	Server& operator=(const Server& server);
 };
 
 void operator<<(Server& server, const SensorData& data);
+
 
 #endif // SERVER_HPP_

@@ -32,14 +32,22 @@
 /**
  * @brief Construct a new Server:: Server object
  */
-Server::Server() : m_consoleActivated(true), m_logsActivated(true) {}
+Server::Server()
+{
+	this->m_consoleActivated = true;
+	this->m_logsActivated = true;
+}
 
 /**
  * @brief Construct a new Server:: Server object with parameters
  * @param consoleOn show console when true
  * @param logsOn enable logs when true
  */
-Server::Server(bool consoleOn, bool logsOn) : m_consoleActivated(consoleOn), m_logsActivated(logsOn) {}
+Server::Server(bool consoleOn, bool logsOn)
+{
+	this->m_consoleActivated = consoleOn;
+	this->m_logsActivated = logsOn;
+}
 
 /**
  * @brief Write data into the console
@@ -112,3 +120,15 @@ void Server::receiveData(const SensorData& data)
  * @param data sensor data
  */
 void operator<<(Server& server, const SensorData& data) { server.receiveData(data); }
+
+/**
+ * @brief use "=" as operator to copy attribute of a server to another one
+ * @param server 
+ * @return Server& 
+ */
+Server& Server::operator=(const Server& server)
+{
+	this->m_consoleActivated = server.m_consoleActivated;
+	this->m_logsActivated = server.m_logsActivated;
+	return *this;
+}

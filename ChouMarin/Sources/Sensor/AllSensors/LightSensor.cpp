@@ -34,11 +34,6 @@
 LightSensor::LightSensor(short unsigned int id) : Sensor<bool>(e_light, e_bool, id){};
 
 /**
- * @brief Destroy the Light Sensor:: Light Sensor object
- */
-LightSensor::~LightSensor(){};
-
-/**
  * @brief get boolean value of the light sensor (true = light on | false = light off)
  * @return const SensorData& 
  */

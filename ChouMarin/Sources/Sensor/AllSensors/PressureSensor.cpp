@@ -34,11 +34,6 @@
 PressureSensor::PressureSensor(short unsigned int id) : Sensor<int>(e_pressure, e_int, id){};
 
 /**
- * @brief Destroy the Pressure Sensor:: Pressure Sensor object
- */
-PressureSensor::~PressureSensor(){};
-
-/**
  * @brief get integer value of the pressure sensor (= 1)
  * @return const SensorData& 
  */

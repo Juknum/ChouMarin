@@ -34,11 +34,6 @@
 HumiditySensor::HumiditySensor(short unsigned int id) : Sensor(e_humidity, e_float, id) {};
 
 /**
- * @brief Destroy the Humidity Sensor:: Humidity Sensor object
- */
-HumiditySensor::~HumiditySensor(){};
-
-/**
  * @brief get float value of ambient humidity of the submarine (~10.5 %)
  * @return const SensorData& 
  */
@@ -53,4 +48,4 @@ const SensorData& HumiditySensor::getData()
 	this->m_data.value = std::to_string(this->m_value);
 
 	return this->m_data;
-}
+};

@@ -29,23 +29,31 @@
 #include "Scheduler.hpp"
 
 /**
- * @brief Construct a new Scheduler:: Scheduler object
+ * @brief Construct a new Scheduler:: with a defined server
  */
-Scheduler::Scheduler()
+Scheduler::Scheduler(Server server)
 {
-	// add sensors to the list of sensors
-	listSensors.push_back(&this->humiditySensor);
-	listSensors.push_back(&this->lightSensor);
-	listSensors.push_back(&this->temperatureSensor);
-	listSensors.push_back(&this->pressureSensor);
+	this->server = server;
+}
+
+/**
+ * @brief Start the scheduler infinite loop
+ */
+void Scheduler::start()
+{
+	// add sensors to the sensors list
+	this->listSensors.push_back(&this->humiditySensor);
+	this->listSensors.push_back(&this->lightSensor);
+	this->listSensors.push_back(&this->temperatureSensor);
+	this->listSensors.push_back(&this->pressureSensor);
 
 	// add time interval check for sensors
-	timeInterval.push_back(TimeInterval(e_humidity, 3000));
-	timeInterval.push_back(TimeInterval(e_light, 5000));
-	timeInterval.push_back(TimeInterval(e_temperature, 2000));
-	timeInterval.push_back(TimeInterval(e_pressure, 10000));
+	this->timeInterval.push_back(TimeInterval(e_humidity, 3000));
+	this->timeInterval.push_back(TimeInterval(e_light, 5000));
+	this->timeInterval.push_back(TimeInterval(e_temperature, 2000));
+	this->timeInterval.push_back(TimeInterval(e_pressure, 10000));
 
-	// watching
+	// watching (infinite loop)
 	while (true)
 	{
 		for (int i = 0; i < (int)this->timeInterval.size(); ++i)
@@ -58,15 +66,10 @@ Scheduler::Scheduler()
 
 					if (data.sensorType == timeInterval[i].m_sensorType)
 					{
-						server << listSensors[j]->getData();
+						this->server << listSensors[j]->getData();
 					}
 				}
 			}
 		}
 	}
 };
-
-/**
- * @brief Destroy the Scheduler:: Scheduler object
- */
-Scheduler::~Scheduler() {}
