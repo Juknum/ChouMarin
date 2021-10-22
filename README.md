@@ -1,23 +1,21 @@
-# Repository officiel du TP projet de AP4A
+# Submarine IOT developped for AP4A at UTBM (Autumn 2021)
 
-> Branche dédiée à Julien CONSTANT, FISE INFO 1  
+- Project under licence : [**MIT License**](https://github.com//Juknum/ChouMarin/blob/main/Constant_Julien_TPMM/LICENSe.md)  
+- branch organisation :
+  - [Git Repport (FR): `Constant_Julien_TPMM_Git.md`](https://github.com/Juknum/ChouMarin/blob/main/Constant_Julien_TPMM_Git.md)  
+  - [Submarine IOT Project: `ChouMarin/*`](https://github.com/Juknum/ChouMarin/tree/main/ChouMarin)
+    - [Sources & Headers files (`.cpp` & `.hpp`): `Sources/*`](https://github.com/Juknum/ChouMarin/tree/main/ChouMarin/Sources)
+    - [Logs files (`.log`): `Logs/*`](https://github.com/Juknum/ChouMarin/tree/main/ChouMarin/Logs)
+    - Makefile & debug stuff: `Debug/*`
 
-- Contact: julien.constant@utbm.fr  
-- Projet sous licence : [**MIT License**](https://github.com/Aldarme/TPAP4A/blob/Constant_Julien_TPMM/LICENSe.md)  
-- Organisation de la branche :
-  - [Rapport sur les commandes Git: `Constant_Julien_TPMM_Git.md`](https://github.com/Aldarme/TPAP4A/blob/Constant_Julien_TPMM/Constant_Julien_TPMM_Git.md)  
-  - [Projet sous-marin IOT: `ChouMarin/*`](https://github.com/Aldarme/TPAP4A/tree/Constant_Julien_TPMM/ChouMarin)
-    - [Fichiers sources & headers (`.cpp` & `.hpp`): `Sources/*`](https://github.com/Aldarme/TPAP4A/tree/Constant_Julien_TPMM/ChouMarin/Sources)
-    - [Fichiers logs (`.log`): `Logs/*`](https://github.com/Aldarme/TPAP4A/tree/Constant_Julien_TPMM/ChouMarin/Logs)
-    - Fichiers de compilation: `Debug/*`
-
-- Compiler le projet:  
+- This project has been developped under Eclipse & Visual Studio Code
+- Compile project using make:  
 
   ```bash
   cd ./ChouMarin/Debug; make all
   ```
 
-- Lancer le projet:  
+- Run the project:  
 
   ```bash
   ./ChouMarin/Debug/ChouMarin.exe
